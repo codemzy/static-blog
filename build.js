@@ -4,7 +4,7 @@ const ReactDOMServer = require('react-dom/server');
 require("@babel/register");
 
 // create dist directory for js so that js build works
-const dist = __dirname + '/../dist';
+const dist = __dirname + '/dist';
 if (!fs.existsSync(dist)){
     fs.mkdirSync(dist);
     fs.mkdirSync(dist + '/js');
@@ -12,11 +12,11 @@ if (!fs.existsSync(dist)){
 }
 
 // components
-const Index = require('./components/pages/Index.js');
-const Notify = require('./components/pages/Notify.js');
+const Index = require('./blog/components/pages/Index.js');
+const Notify = require('./blog/components/pages/Notify.js');
 
 const buildPage = function(page, Component) {
-    fs.writeFile(__dirname + '/../dist/' + page + '.html', '<!DOCTYPE html>\n' + Component.default, function(err) {
+    fs.writeFile(__dirname + '/dist/' + page + '.html', '<!DOCTYPE html>\n' + Component.default, function(err) {
             if(err) { console.error(err); return false }
             console.log('Build of ' + page + '.html successful');
             return true;
