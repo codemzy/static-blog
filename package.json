@@ -1,11 +1,11 @@
 {
-    "name": "react-static",
+    "name": "blog",
     "version": "1.0.0",
-    "description": "A simple react static website builder.",
+    "description": "A simple react static blog builder.",
     "author": "codemzy",
     "license": "UNLICENSED",
     "scripts": {
-        "dev": "NODE_ENV=development node server/server.js",
+        "dev": "NODE_ENV=development node server.js",
         "dev-css": "postcss css/*.css --dir dist/css --ext .min.css",
         "build": "npm run build-static && npm run build-css && npm run build-js",
         "build-css": "postcss css/*.css --dir dist/css --ext .min.css --env production",
