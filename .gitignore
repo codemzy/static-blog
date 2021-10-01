@@ -1,0 +1,7 @@
+node_modules/
+
+# exclude private info
+.env
+
+# exclude build
+dist/*
