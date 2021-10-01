@@ -5,7 +5,6 @@ module.exports = {
     purge: [
        './blog/components/**/*.{js,ts,jsx,tsx}', 
        './js/**/*.{js,ts,jsx,tsx}',
-    //    './app/components/**/*.{js,ts,jsx,tsx}'
     ],
     darkMode: false, // or 'media' or 'class'
     theme: {
@@ -21,5 +20,7 @@ module.exports = {
             }
         },
     },
-    plugins: [],
+    plugins: [
+        require('@tailwindcss/typography'),
+    ],
 }
