@@ -2,6 +2,8 @@
 title: This is my first blog post and it will be epic!
 description: This is a description about the blog post. It will be the introductory paragraph used in search results, on blog list pages, and at the top of the blog post. It's pretty important.
 categories: [ 'A Topic', 'Another Topic']
+published: 2020-10-01
+updated: []
 ---
 
 ## This is the blog content
