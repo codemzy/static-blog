@@ -1,4 +1,5 @@
 const fs = require('fs');
+const matter = require('gray-matter');
 const React = require('react');
 const ReactDOMServer = require('react-dom/server');
 import Post from '../blog/components/post/Post';
@@ -8,7 +9,9 @@ import {buildPage} from '../build';
 // get all the blog posts
 fs.readdirSync(__dirname + '/../blog/posts').forEach(filename => {
     const blogContent = fs.readFileSync(`${__dirname + '/../blog/posts'}/${filename}`, "utf8");
-    console.log(blogContent);
+    const {data, content} = matter(blogContent);
+    console.log(data, content);
+    buildPage("a-blog-post", ReactDOMServer.renderToStaticMarkup(<Post {...data} content={content} />));
 });
 
 
