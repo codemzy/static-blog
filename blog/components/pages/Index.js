@@ -20,4 +20,4 @@ function Index(props) {
     );
 };
 
-export default ReactDOMServer.renderToStaticMarkup(<Index />);
+export default Index;
