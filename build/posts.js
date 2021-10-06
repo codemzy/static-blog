@@ -10,8 +10,8 @@ import {buildPage} from '../build';
 fs.readdirSync(__dirname + '/../blog/posts').forEach(filename => {
     const blogContent = fs.readFileSync(`${__dirname + '/../blog/posts'}/${filename}`, "utf8");
     const {data, content} = matter(blogContent);
-    console.log(data, content);
-    buildPage("a-blog-post", ReactDOMServer.renderToStaticMarkup(<Post {...data} content={content} />));
+    const [date, path] = filename.split(/[_.]/);
+    buildPage(path, ReactDOMServer.renderToStaticMarkup(<Post {...data} content={content} />));
 });
 
 
