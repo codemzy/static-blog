@@ -11,7 +11,7 @@ import Post from '../blog/components/post/Post';
 import List from '../blog/components/post/List';
 
 // for storing a list of all the blog posts
-const posts = [];
+let posts = [];
 
 // fetch all the blog posts
 fs.readdirSync(__dirname + '/../blog/posts').forEach(filename => {
@@ -29,7 +29,7 @@ fs.readdirSync(__dirname + '/../blog/posts').forEach(filename => {
     } else if (isBefore(latestDate, new Date()) || process.env.PREVIEW) { // if the post is ready to be published
         // check if the post is already in the array
         let discard = false; // if newer version exists we will discard this post
-        let filtered = posts.filter(function(post) {
+        posts = posts.filter(function(post) {
             if (post.path === path) {
                 if (isBefore(post.latestDate , latestDate)) {
                     return false;
@@ -38,10 +38,41 @@ fs.readdirSync(__dirname + '/../blog/posts').forEach(filename => {
             }
             return true;
         })
-        posts.push({ path: path, lastestDate: lastestDate, ...data, content: content });
-        buildPage(path, ReactDOMServer.renderToStaticMarkup(<Post {...data} content={content} />));
+        // if the post is not discarded, add it to posts
+        if (!discard) {
+            posts.push({ path: path, latestDate: latestDate, data: data, content: content });
+        }
     }
 });
+
+// map over posts array and create all the blog post pages
+posts.map(function(post) {
+    buildPage(post.path, ReactDOMServer.renderToStaticMarkup(<Post {...post.data} content={post.content} />));
+});
+
+// sort the posts array in date order
+posts = posts.sort(function(a, b) {
+    return isBefore(b.latestDate, a.latestDate) ? -1 : isBefore(a.latestDate, b.latestDate) ? 1 : 0;
+});
+
+// create blog pages
+let page = 1;
+let pageList = [];
+let getPath = function({category, page}) {
+    return `${category ? `${category}/` : ''}` + `${page > 1 ? "page/" : ''}` + `${page === 1 ? "index" : page}`
+};
+posts.map(function(post, i) {
+    if (pageList.length === 20) {
+        // build the page
+        buildPage(getPath({ page: page }), ReactDOMServer.renderToStaticMarkup(<List posts={pageList} page={page} postition={page === 1 ? "first" : false } />));
+        pageList = []; // empty pageList
+        page++; // next page number
+    }
+    pageList.push({ path: post.path, date: post.latestDate, ...post.data });
+});
+// final page
+buildPage(getPath({ page: page }), ReactDOMServer.renderToStaticMarkup(<List posts={pageList} page={page} postition="last" />));
+
 
 
 // buildPage("a-blog-post", ReactDOMServer.renderToStaticMarkup(<Post title={content.title} />));
