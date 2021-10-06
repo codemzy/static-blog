@@ -46,8 +46,9 @@ fs.readdirSync(__dirname + '/../blog/posts').forEach(filename => {
 });
 
 // map over posts array and create all the blog post pages
-posts.map(function(post) {
+posts = posts.map(function(post) {
     buildPage(post.path, ReactDOMServer.renderToStaticMarkup(<Post {...post.data} content={post.content} />));
+    return { path: post.path, date: post.latestDate, ...post.data }; // don't need the content anymore just the data
 });
 
 // sort the posts array in date order
@@ -55,25 +56,60 @@ posts = posts.sort(function(a, b) {
     return isBefore(b.latestDate, a.latestDate) ? -1 : isBefore(a.latestDate, b.latestDate) ? 1 : 0;
 });
 
-// create blog pages
-let page = 1;
-let pageList = [];
-let getPath = function({category, page}) {
-    return `${category ? `${category}/` : ''}` + `${page > 1 ? "page/" : ''}` + `${page === 1 ? "index" : page}`
+// create list pages
+const buildListPages = function({category, list}) {
+    let page = 1;
+    let pageList = [];
+    let getPath = function({category, page}) {
+        return `${category ? `${category}/` : ''}` + `${page > 1 ? "page/" : ''}` + `${page === 1 ? "index" : page}`
+    };
+    list.map(function(post, i) {
+        if (pageList.length === 20) {
+            // build the page
+            buildPage(getPath({ category, page }), ReactDOMServer.renderToStaticMarkup(<List posts={pageList} page={page} postition={page === 1 ? "first" : false } />));
+            pageList = []; // empty pageList
+            page++; // next page number
+        }
+        pageList.push(post);
+    });
+    // final page
+    buildPage(getPath({ category, page }), ReactDOMServer.renderToStaticMarkup(<List posts={pageList} page={page} postition="last" />));
 };
-posts.map(function(post, i) {
-    if (pageList.length === 20) {
-        // build the page
-        buildPage(getPath({ page: page }), ReactDOMServer.renderToStaticMarkup(<List posts={pageList} page={page} postition={page === 1 ? "first" : false } />));
-        pageList = []; // empty pageList
-        page++; // next page number
+
+// create blog pages
+buildListPages({ list: posts });
+
+// let page = 1;
+// let pageList = [];
+// let getPath = function({category, page}) {
+//     return `${category ? `${category}/` : ''}` + `${page > 1 ? "page/" : ''}` + `${page === 1 ? "index" : page}`
+// };
+// posts.map(function(post, i) {
+//     if (pageList.length === 20) {
+//         // build the page
+//         buildPage(getPath({ page: page }), ReactDOMServer.renderToStaticMarkup(<List posts={pageList} page={page} postition={page === 1 ? "first" : false } />));
+//         pageList = []; // empty pageList
+//         page++; // next page number
+//     }
+//     pageList.push(post);
+// });
+// // final page
+// buildPage(getPath({ page: page }), ReactDOMServer.renderToStaticMarkup(<List posts={pageList} page={page} postition="last" />));
+
+// posts sorted by category
+let categorisedPosts = posts.reduce(function(acc, post) {
+    let key = post.categoryId;
+    if (!acc[key]) {
+        acc[key] = []; // create the key if it doesn't exist
     }
-    pageList.push({ path: post.path, date: post.latestDate, ...post.data });
-});
-// final page
-buildPage(getPath({ page: page }), ReactDOMServer.renderToStaticMarkup(<List posts={pageList} page={page} postition="last" />));
+    acc[key].push(post); // add the post to the category
+    return acc;
+}, {});
 
-
+// create category pages
+for (let category in categorisedPosts) {
+    buildListPages({ category, list: categorisedPosts[category]});
+}
 
 // buildPage("a-blog-post", ReactDOMServer.renderToStaticMarkup(<Post title={content.title} />));
 
