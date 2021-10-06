@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOMServer from 'react-dom/server';
 import marked from 'marked';
 import format from 'date-fns/format';
 // settings
