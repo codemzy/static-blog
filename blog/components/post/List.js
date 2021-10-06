@@ -51,8 +51,15 @@ function List({posts, page, position, ...props}) {
                                 );
                             })}
                         </div>
-                        <div className="bg-gray-100 lg:w-1/3 lg:p-5">
-                            
+                        <div className="lg:w-1/3 lg:p-5">
+                            <div className="my-16">
+                                <h3 className="uppercase text-sm font-bold py-2 text-gray-900 text-opacity-70"><a href="/">Categories</a></h3>
+                                <ul className="text-xl font-medium leading-loose">
+                                    { Object.keys(categories).map(function(category) {
+                                        return <li key={category}><a href={`/${category}`}>{categories[category]}</a></li>
+                                    })}
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
