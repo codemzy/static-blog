@@ -3,7 +3,7 @@ title: This is my second blog post and it will even more epic!
 description: This is a description about the blog post. It will be the introductory paragraph used in search results, on blog list pages, and at the top of the blog post. It's pretty important.
 categoryId: 'news'
 authorId: 'codemzy'
-published: '2020-10-06'
+published: '2021-10-06'
 updated: false
 ---
 
