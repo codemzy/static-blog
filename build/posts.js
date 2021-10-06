@@ -11,6 +11,7 @@ fs.readdirSync(__dirname + '/../blog/posts').forEach(filename => {
     const blogContent = fs.readFileSync(`${__dirname + '/../blog/posts'}/${filename}`, "utf8");
     const {data, content} = matter(blogContent);
     const [date, path] = filename.split(/[_.]/);
+    data.date = new Date(date);
     buildPage(path, ReactDOMServer.renderToStaticMarkup(<Post {...data} content={content} />));
 });
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import marked from 'marked';
+import format from 'date-fns/format';
 // settings
 import categories from '../../settings/categories';
 import authors from '../../settings/authors';
@@ -33,7 +34,7 @@ function Post(props) {
                     <div className="max-w-3xl mx-auto my-10">
                         <p className="py-5"><a className="font-semibold text-lg md:text-xl" href={`/${props.categoryId}`}>{categories[props.categoryId]}</a></p>
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-snug md:leading-snug lg:leading-snug">{props.title}</h1>
-                        <p className="md:text-lg py-10 prose">Written {createAuthorLink(props.authorId)} on October 5th, 2021</p>
+                        <p className="md:text-lg py-10 prose">Written {createAuthorLink(props.authorId)} on {format(props.date, 'MMMM do, yyyy')}</p>
                     </div>
                     <div>
                         <div className="max-w-3xl mx-auto">
