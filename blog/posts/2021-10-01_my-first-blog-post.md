@@ -1,10 +1,10 @@
 ---
 title: This is my first blog post and it will be epic!
 description: This is a description about the blog post. It will be the introductory paragraph used in search results, on blog list pages, and at the top of the blog post. It's pretty important.
-category-id: 'marketing'
+categoryId: 'marketing'
 published: 2020-10-01
 updated: []
-author-id: 'codemzy'
+authorId: 'codemzy'
 ---
 
 ## This is the blog content

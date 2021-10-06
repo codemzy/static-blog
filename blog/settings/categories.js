@@ -4,7 +4,9 @@
 // }
 
 const categories = {
-    "marketing": "Marketing" 
+    "guides": "Guides",
+    "marketing": "Marketing",
+    "news": "News"
 };
 
 export default categories;
