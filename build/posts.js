@@ -5,6 +5,7 @@ import isBefore from 'date-fns/isBefore';
 const React = require('react');
 const ReactDOMServer = require('react-dom/server');
 import {buildPage} from '../build';
+import { blogPagesLength } from '../blog/settings/blog';
 
 // components
 import Post from '../blog/components/post/Post';
@@ -64,7 +65,7 @@ const buildListPages = function({category, list}) {
         return `${category ? `${category}/` : ''}` + `${page > 1 ? "page/" : ''}` + `${page === 1 ? "index" : page}`
     };
     list.map(function(post, i) {
-        if (pageList.length === 20) {
+        if (pageList.length === blogPagesLength) {
             // build the page
             buildPage(getPath({ category, page }), ReactDOMServer.renderToStaticMarkup(<List posts={pageList} page={page} postition={page === 1 ? "first" : false } />));
             pageList = []; // empty pageList
@@ -78,23 +79,6 @@ const buildListPages = function({category, list}) {
 
 // create blog pages
 buildListPages({ list: posts });
-
-// let page = 1;
-// let pageList = [];
-// let getPath = function({category, page}) {
-//     return `${category ? `${category}/` : ''}` + `${page > 1 ? "page/" : ''}` + `${page === 1 ? "index" : page}`
-// };
-// posts.map(function(post, i) {
-//     if (pageList.length === 20) {
-//         // build the page
-//         buildPage(getPath({ page: page }), ReactDOMServer.renderToStaticMarkup(<List posts={pageList} page={page} postition={page === 1 ? "first" : false } />));
-//         pageList = []; // empty pageList
-//         page++; // next page number
-//     }
-//     pageList.push(post);
-// });
-// // final page
-// buildPage(getPath({ page: page }), ReactDOMServer.renderToStaticMarkup(<List posts={pageList} page={page} postition="last" />));
 
 // posts sorted by category
 let categorisedPosts = posts.reduce(function(acc, post) {
