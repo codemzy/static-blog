@@ -52,7 +52,7 @@ function Pager({page, pages, path}) {
 
     return (
         pages > 1 ? // only show pager if there's more than one page
-        <div className="my-5 p-5 text-center font-medium text-gray-900 text-opacity-60">
+        <div className="p-5 text-center font-medium text-gray-900 text-opacity-60 w-full">
             { page > 1 ? <a href={href(page - 1)} className="inline-block p-3">{previousIcon}</a> : <div className="inline-block p-3 text-gray-300">{previousIcon}</div> }
             { page - 4 > 0 && pages - page < 1 ? pageLink(page - 4) : false }
             { page - 3 > 0 && pages - page < 2 ? pageLink(page - 3) : false }
@@ -82,34 +82,32 @@ function List({posts, page, pages, path, ...props}) {
                         <Markdown className="md:text-lg py-10 prose" type="div">{blogDescription}</Markdown>
                     </div>
                 </div>
-                <div className="p-5 flex-grow">
-                    <div className="max-w-screen-lg mx-auto lg:flex">
-                        <div className="lg:pr-20 lg:w-2/3">
-                            {posts.map(function(post) {
-                                return (
-                                    <div className="my-20" key={post.path}>
-                                        <a href={`/${post.path}`}>
-                                            <h2 className="font-bold text-2xl lg:text-4xl lg:leading-snug">{post.title}</h2>
-                                            <p className="my-5 prose">{post.description}</p>
-                                        </a>
-                                        <p className="prose prose-sm">Written {createAuthorLink(post.authorId)} {createCategoryLink(post.categoryId)} on {format(post.date, 'MMMM do, yyyy')}</p>
-                                    </div>
-                                );
-                            })}
-                        </div>
-                        <div className="lg:w-1/3 lg:p-5">
-                            <div className="my-16">
-                                <h3 className="uppercase text-sm font-bold py-2 text-gray-900 text-opacity-70"><a href="/">Categories</a></h3>
-                                <ul className="text-xl font-medium leading-loose">
-                                    { Object.keys(categories).map(function(category) {
-                                        return <li key={category}><a href={`/${category}`}>{categories[category]}</a></li>
-                                    })}
-                                </ul>
-                            </div>
+                <div className="m-5 flex-grow max-w-screen-lg lg:mx-auto lg:flex lg:flex-wrap">
+                    <div className="lg:pr-20 lg:w-2/3">
+                        {posts.map(function(post) {
+                            return (
+                                <div className="my-20" key={post.path}>
+                                    <a href={`/${post.path}`}>
+                                        <h2 className="font-bold text-2xl lg:text-4xl lg:leading-snug">{post.title}</h2>
+                                        <p className="my-5 prose">{post.description}</p>
+                                    </a>
+                                    <p className="prose prose-sm">Written {createAuthorLink(post.authorId)} {createCategoryLink(post.categoryId)} on {format(post.date, 'MMMM do, yyyy')}</p>
+                                </div>
+                            );
+                        })}
+                    </div>
+                    <div className="w-full my-5 lg:order-last lg:mt-auto"><Pager page={page} pages={pages} path={path} /></div>
+                    <div className="lg:w-1/3 lg:p-5">
+                        <div className="my-16">
+                            <h3 className="uppercase text-sm font-bold py-2 text-gray-900 text-opacity-70"><a href="/">Categories</a></h3>
+                            <ul className="text-xl font-medium leading-loose">
+                                { Object.keys(categories).map(function(category) {
+                                    return <li key={category}><a href={`/${category}`}>{categories[category]}</a></li>
+                                })}
+                            </ul>
                         </div>
                     </div>
                 </div>
-                <Pager page={page} pages={pages} path={path} />
             </div>
         </Main>
     );
