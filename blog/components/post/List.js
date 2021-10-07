@@ -1,13 +1,16 @@
 import React from 'react';
 import format from 'date-fns/format';
 // settings
+import {blogName, blogDescription} from '../../settings/blog';
 import categories from '../../settings/categories';
 import authors from '../../settings/authors';
 // components
 import Main from '../Main';
 import Nav from '../Nav';
+import Markdown from './Markdown';
 
-const createAuthorLink = function(authorId) {
+// to create a link to author page if has a valid author
+export const createAuthorLink = function(authorId) {
     if (authorId && authors[authorId]) {
         return <span>by <a href={`/authors/${authorId}`}>{authors[authorId].name}</a></span>
     } else {
@@ -15,6 +18,7 @@ const createAuthorLink = function(authorId) {
     }
 }
 
+// to create a link to category page if has a valid category
 const createCategoryLink = function(categoryId) {
     if (categoryId && categories[categoryId]) {
         return <span>in <a href={`/${categoryId}`}>{categories[categoryId]}</a></span>
@@ -32,8 +36,8 @@ function List({posts, page, position, ...props}) {
                 <Nav />
                 <div className="bg-gray-100 p-5">
                     <div className="max-w-3xl mx-auto text-center mt-10 py-10">
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-snug md:leading-snug lg:leading-snug xl:leading-snug">The Static Blog</h1>
-                        <p className="md:text-lg py-10 prose">Something about the blog that you are creating, and what you will be writing about. Oh and maybe a <a href="">link to your newsletter</a> or something!</p>
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-snug md:leading-snug lg:leading-snug xl:leading-snug">{blogName}</h1>
+                        <Markdown className="md:text-lg py-10 prose" type="div">{blogDescription}</Markdown>
                     </div>
                 </div>
                 <div className="p-5">

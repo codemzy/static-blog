@@ -1,29 +1,18 @@
 import React from 'react';
-import marked from 'marked';
 import format from 'date-fns/format';
 // settings
 import categories from '../../settings/categories';
-import authors from '../../settings/authors';
 // components
 import Main from '../Main';
 import Nav from '../Nav';
+import Markdown from './Markdown';
+// utils
+import { createAuthorLink } from './List';
 // svg
 import { CheckIcon } from '../svg/Icons';
 
 // homepage component
 function Post(props) {
-
-    const createMarkup = function(raw) {
-        return { __html: marked(raw) };
-    }
-
-    const createAuthorLink = function(authorId) {
-        if (authorId && authors[authorId]) {
-            return <span>by <a href={`/authors/${authorId}`}>{authors[authorId].name}</a></span>
-        } else {
-            return '';
-        }
-    }
 
     return (
         <Main {...props}>
@@ -38,7 +27,7 @@ function Post(props) {
                     <div>
                         <div className="max-w-3xl mx-auto">
                             <p className="text-lg lg:text-xl font-semibold">{props.description}</p>
-                            <article className="prose lg:prose-lg max-w-none my-10" dangerouslySetInnerHTML={createMarkup(props.content)} />
+                            <Markdown className="prose lg:prose-lg max-w-none my-10" type="article">{props.content}</Markdown>
                         </div>
                     </div>
                 </div>
