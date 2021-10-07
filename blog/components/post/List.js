@@ -8,6 +8,8 @@ import authors from '../../settings/authors';
 import Main from '../Main';
 import Nav from '../Nav';
 import Markdown from './Markdown';
+// svg
+import { ArrowLeft, ArrowRight } from '../svg/Icons';
 
 // to create a link to author page if has a valid author
 export const createAuthorLink = function(authorId) {
@@ -42,10 +44,14 @@ function Pager({page, pages, path}) {
         return <a href={href(linkedPage)} className="inline-block p-3">{linkedPage}</a>;
     };
 
+    const previousIcon = <ArrowLeft className="inline-block -mt-0.5" width="18" height="18" aria-label="Previous" />;
+    const nextIcon = <ArrowRight className="inline-block -mt-0.5" width="18" height="18" aria-label="Next" />;
+    
+
     return (
         pages > 1 ? // only show pager if there's more than one page
         <div className="my-5 p-5 text-center font-medium text-gray-900 text-opacity-60">
-            { page > 1 ? <a href={href(page - 1)} className="inline-block p-3">Previous</a> : <div className="inline-block p-3 text-gray-300">Previous</div> }
+            { page > 1 ? <a href={href(page - 1)} className="inline-block p-3">{previousIcon}</a> : <div className="inline-block p-3 text-gray-300">{previousIcon}</div> }
             { page - 4 > 0 && pages - page < 1 ? pageLink(page - 4) : false }
             { page - 3 > 0 && pages - page < 2 ? pageLink(page - 3) : false }
             { page - 2 > 0 ? pageLink(page - 2) : false }
@@ -55,7 +61,7 @@ function Pager({page, pages, path}) {
             { page + 2 <= pages ? pageLink(page + 2) : false }
             { page + 3 <= pages && page < 3 ? pageLink(page + 3) : false }
             { page + 4 <= pages && page < 2 ? pageLink(page + 4) : false }
-            { page + 1 <= pages ? <a href={href(page + 1)} className="inline-block p-3">Next</a> : <div className="inline-block p-3 text-gray-300">Next</div> }
+            { page + 1 <= pages ? <a href={href(page + 1)} className="inline-block p-3">{nextIcon}</a> : <div className="inline-block p-3 text-gray-300">{nextIcon}</div> }
         </div>
         : null
     )
