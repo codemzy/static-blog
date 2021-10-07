@@ -30,6 +30,9 @@ const createCategoryLink = function(categoryId) {
 // pager component
 function Pager({page, pages}) {
 
+    pages = 20;
+    page = 1;
+
     const pageLink = function(linkedPage) {
         return <a href="" className="inline-block p-3">{linkedPage}</a>;
     }
@@ -37,12 +40,15 @@ function Pager({page, pages}) {
     return (
         <div className="my-5 p-5 text-center font-medium text-gray-900 text-opacity-60">
             { page - 1 > 0 ? pageLink("Previous") : false }
+            { page - 4 > 0 && pages - page < 1 ? pageLink(page - 4) : false }
+            { page - 3 > 0 && pages - page < 2 ? pageLink(page - 3) : false }
             { page - 2 > 0 ? pageLink(page - 2) : false }
             { page - 1 > 0 ? pageLink(page - 1) : false }
             <div className="inline-block p-3 text-gray-900 underline">{page}</div>
             { page + 1 <= pages ? pageLink(page + 1) : false }
             { page + 2 <= pages ? pageLink(page + 2) : false }
-            { page + 3 <= pages ? pageLink(page + 3) : false }
+            { page + 3 <= pages && page < 3 ? pageLink(page + 3) : false }
+            { page + 4 <= pages && page < 2 ? pageLink(page + 4) : false }
             { page + 1 <= pages ? pageLink("Next") : false }
         </div>
     )
