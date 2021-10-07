@@ -39,7 +39,8 @@ function Pager({page, pages, path}) {
     path = path.replace(/\/?page\/\d+/, '');
     
     const href = function(linkedPage) {
-        return `${path}${linkedPage === 1 ? "" : `/page/${linkedPage}`}`
+        // path for link or if it's empty just return / to go back to index
+        return `${path}${linkedPage === 1 ? "" : `/page/${linkedPage}`}` || "/";
     };
 
     const pageLink = function(linkedPage) {
