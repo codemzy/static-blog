@@ -61,20 +61,21 @@ posts = posts.sort(function(a, b) {
 const buildListPages = function({category, list}) {
     let page = 1;
     let pageList = [];
+    let pages = Math.ceil(list.length/blogPagesLength);
     let getPath = function({category, page}) {
         return `${category ? `${category}/` : ''}` + `${page > 1 ? "page/" : ''}` + `${page === 1 ? "index" : page}`
     };
     list.map(function(post, i) {
         if (pageList.length === blogPagesLength) {
             // build the page
-            buildPage(getPath({ category, page }), ReactDOMServer.renderToStaticMarkup(<List posts={pageList} page={page} postition={page === 1 ? "first" : false } />));
+            buildPage(getPath({ category, page }), ReactDOMServer.renderToStaticMarkup(<List posts={pageList} page={page} pages={pages} postition={page === 1 ? "first" : false } />));
             pageList = []; // empty pageList
             page++; // next page number
         }
         pageList.push(post);
     });
     // final page
-    buildPage(getPath({ category, page }), ReactDOMServer.renderToStaticMarkup(<List posts={pageList} page={page} postition="last" />));
+    buildPage(getPath({ category, page }), ReactDOMServer.renderToStaticMarkup(<List posts={pageList} page={page} pages={pages} postition="last" />));
 };
 
 // create blog pages

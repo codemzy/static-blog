@@ -27,8 +27,29 @@ const createCategoryLink = function(categoryId) {
     }
 }
 
+// pager component
+function Pager({page, pages}) {
+
+    const pageLink = function(linkedPage) {
+        return <a href="" className="inline-block p-3">{linkedPage}</a>;
+    }
+
+    return (
+        <div className="my-5 p-5 text-center font-medium text-gray-900 text-opacity-60">
+            { page - 1 > 0 ? pageLink("Previous") : false }
+            { page - 2 > 0 ? pageLink(page - 2) : false }
+            { page - 1 > 0 ? pageLink(page - 1) : false }
+            <div className="inline-block p-3 text-gray-900 underline">{page}</div>
+            { page + 1 <= pages ? pageLink(page + 1) : false }
+            { page + 2 <= pages ? pageLink(page + 2) : false }
+            { page + 3 <= pages ? pageLink(page + 3) : false }
+            { page + 1 <= pages ? pageLink("Next") : false }
+        </div>
+    )
+};
+
 // blog list component
-function List({posts, page, position, ...props}) {
+function List({posts, page, pages, ...props}) {
 
     return (
         <Main {...props}>
@@ -40,7 +61,7 @@ function List({posts, page, position, ...props}) {
                         <Markdown className="md:text-lg py-10 prose" type="div">{blogDescription}</Markdown>
                     </div>
                 </div>
-                <div className="p-5">
+                <div className="p-5 flex-grow">
                     <div className="max-w-screen-lg mx-auto lg:flex">
                         <div className="lg:pr-20 lg:w-2/3">
                             {posts.map(function(post) {
@@ -67,6 +88,7 @@ function List({posts, page, position, ...props}) {
                         </div>
                     </div>
                 </div>
+                <Pager page={page} pages={pages} />
             </div>
         </Main>
     );

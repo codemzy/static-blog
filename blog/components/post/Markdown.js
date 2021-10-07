@@ -9,7 +9,7 @@ function Markdown({ type = 'div', children, ...props}) {
     }
 
     // sets the markup inside an element
-    return React.createElement(type, {dangerouslySetInnerHTML: convertMarkdown(children), ...props}, null);;
+    return React.createElement(type, {dangerouslySetInnerHTML: convertMarkdown(children), ...props}, null);
 };
 
 export default Markdown;
