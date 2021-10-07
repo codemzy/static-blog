@@ -41,15 +41,3 @@ exports.buildPage = function buildPage(path, html) {
 
 // build the blog posts
 require("./build/posts.js");
-
-// // location of blog posts
-// const blogUrl = __dirname + '/blog/posts';
-
-// // components
-// const Index = require('./blog/components/pages/Index.js');
-
-
-
-// // build the static html pages
-// buildPage('index', Index);
-// buildPage('post', staticMarkup);

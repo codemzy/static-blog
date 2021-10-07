@@ -95,18 +95,3 @@ let categorisedPosts = posts.reduce(function(acc, post) {
 for (let category in categorisedPosts) {
     buildListPages({ category, list: categorisedPosts[category]});
 }
-
-// buildPage("a-blog-post", ReactDOMServer.renderToStaticMarkup(<Post title={content.title} />));
-
-// exports.buildPost = function(content) {
-//     buildPage("a-blog-post", ReactDOMServer.renderToStaticMarkup(<Post title={content.title} />));
-// };
-
-// exports.buildPost = function(content) {
-//     return ReactDOMServer.renderToStaticMarkup(<Post title={content.title} />)
-// };
-
-// exports.staticPage = async function(content) {
-//     let Index = await import('../blog/components/pages/Index');
-//     return ReactDOMServer.renderToStaticMarkup(<Index title={content.title} />)
-// };
