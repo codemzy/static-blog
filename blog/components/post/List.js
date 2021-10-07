@@ -28,18 +28,24 @@ const createCategoryLink = function(categoryId) {
 }
 
 // pager component
-function Pager({page, pages}) {
+function Pager({page, pages, path}) {
 
-    pages = 20;
-    page = 1;
+    // remove the current page from the path
+    path = path.replace(/\/?index(?![\s\S]*\/?index)/, '');
+    path = path.replace(/\/?page\/\d+/, '');
+    
+    const href = function(linkedPage) {
+        return `${path}${linkedPage === 1 ? "/" : `/page/${linkedPage}`}`
+    };
 
     const pageLink = function(linkedPage) {
-        return <a href="" className="inline-block p-3">{linkedPage}</a>;
-    }
+        return <a href={href(linkedPage)} className="inline-block p-3">{linkedPage}</a>;
+    };
 
     return (
+        pages > 1 ? // only show pager if there's more than one page
         <div className="my-5 p-5 text-center font-medium text-gray-900 text-opacity-60">
-            { page - 1 > 0 ? pageLink("Previous") : false }
+            { page > 1 ? <a href={href(page - 1)} className="inline-block p-3">Previous</a> : <div className="inline-block p-3 text-gray-300">Previous</div> }
             { page - 4 > 0 && pages - page < 1 ? pageLink(page - 4) : false }
             { page - 3 > 0 && pages - page < 2 ? pageLink(page - 3) : false }
             { page - 2 > 0 ? pageLink(page - 2) : false }
@@ -49,13 +55,14 @@ function Pager({page, pages}) {
             { page + 2 <= pages ? pageLink(page + 2) : false }
             { page + 3 <= pages && page < 3 ? pageLink(page + 3) : false }
             { page + 4 <= pages && page < 2 ? pageLink(page + 4) : false }
-            { page + 1 <= pages ? pageLink("Next") : false }
+            { page + 1 <= pages ? <a href={href(page + 1)} className="inline-block p-3">Next</a> : <div className="inline-block p-3 text-gray-300">Next</div> }
         </div>
+        : null
     )
 };
 
-// blog list component
-function List({posts, page, pages, ...props}) {
+// blog list page component
+function List({posts, page, pages, path, ...props}) {
 
     return (
         <Main {...props}>
@@ -94,7 +101,7 @@ function List({posts, page, pages, ...props}) {
                         </div>
                     </div>
                 </div>
-                <Pager page={page} pages={pages} />
+                <Pager page={page} pages={pages} path={path} />
             </div>
         </Main>
     );
