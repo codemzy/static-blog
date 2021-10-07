@@ -1,7 +1,7 @@
 ---
 title: This is my first blog post and it will be epic!
 description: This is a description about the blog post. It will be the introductory paragraph used in search results, on blog list pages, and at the top of the blog post. It's pretty important.
-categoryId: 'marketing'
+categoryId: 'product-x'
 authorId: 'codemzy'
 published: '2021-10-01'
 updated: false

@@ -11,14 +11,14 @@ const categories = {
         name: "Guides",
         description: "",
     },
-    "marketing": {
-        name: "Marketing",
-        description: "",
-    },
     "news": { 
         name: "News",
-        description: "",
-    }
+        description: "Read all the latest news and announcements.",
+    },
+    "product-x": {
+        name: "Product X",
+        description: "This is where you introduce a topic on your blog, e.g. **Check out the resources below to improve your Product X knowledge.**",
+    },
 };
 
 export default categories;

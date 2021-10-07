@@ -71,7 +71,7 @@ function Pager({page, pages, path}) {
 };
 
 // blog list page component
-function List({posts, page, pages, path, ...props}) {
+function List({category, posts, page, pages, path, ...props}) {
 
     return (
         <Main {...props}>
@@ -79,8 +79,8 @@ function List({posts, page, pages, path, ...props}) {
                 <Nav />
                 <div className="bg-gray-100 p-5">
                     <div className="max-w-3xl mx-auto text-center mt-10 py-10">
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-snug md:leading-snug lg:leading-snug xl:leading-snug">{blogName}</h1>
-                        <Markdown className="md:text-lg py-10 prose" type="div">{blogDescription}</Markdown>
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-snug md:leading-snug lg:leading-snug xl:leading-snug">{category ? categories[category].name : blogName}</h1>
+                        <Markdown className="md:text-lg py-10 prose" type="div">{category && categories[category].description ? categories[category].description : blogDescription}</Markdown>
                     </div>
                 </div>
                 <div className="m-5 flex-grow max-w-screen-lg lg:mx-auto lg:flex lg:flex-wrap">

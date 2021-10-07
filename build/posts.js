@@ -68,14 +68,14 @@ const buildListPages = function({category, list}) {
     list.map(function(post, i) {
         if (pageList.length === blogPagesLength) {
             // build the page
-            buildPage(getPath({ category, page }), ReactDOMServer.renderToStaticMarkup(<List posts={pageList} page={page} pages={pages} path={getPath({ category, page })} />));
+            buildPage(getPath({ category, page }), ReactDOMServer.renderToStaticMarkup(<List category={category} posts={pageList} page={page} pages={pages} path={getPath({ category, page })} />));
             pageList = []; // empty pageList
             page++; // next page number
         }
         pageList.push(post);
     });
     // final page
-    buildPage(getPath({ category, page }), ReactDOMServer.renderToStaticMarkup(<List posts={pageList} page={page} pages={pages} path={getPath({ category, page })} />));
+    buildPage(getPath({ category, page }), ReactDOMServer.renderToStaticMarkup(<List category={category} posts={pageList} page={page} pages={pages} path={getPath({ category, page })} />));
 };
 
 // create blog pages
