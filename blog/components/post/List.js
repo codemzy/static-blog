@@ -23,7 +23,7 @@ export const createAuthorLink = function(authorId) {
 // to create a link to category page if has a valid category
 const createCategoryLink = function(categoryId) {
     if (categoryId && categories[categoryId]) {
-        return <span>in <a href={`/${categoryId}`}>{categories[categoryId]}</a></span>
+        return <span>in <a href={`/${categoryId}`}>{categories[categoryId].name}</a></span>
     } else {
         return '';
     }
@@ -103,7 +103,7 @@ function List({posts, page, pages, path, ...props}) {
                             <h3 className="uppercase text-sm font-bold py-2 text-gray-900 text-opacity-70"><a href="/">Categories</a></h3>
                             <ul className="text-xl font-medium leading-loose">
                                 { Object.keys(categories).map(function(category) {
-                                    return <li key={category}><a href={`/${category}`}>{categories[category]}</a></li>
+                                    return <li key={category}><a href={`/${category}`}>{categories[category].name}</a></li>
                                 })}
                             </ul>
                         </div>
