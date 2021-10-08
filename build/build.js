@@ -39,5 +39,8 @@ exports.buildPage = function buildPage(path, html) {
     });
 };
 
+// build blog pages e.g. custom 404
+require("./pages.js");
+
 // build the blog posts
 require("./posts.js");

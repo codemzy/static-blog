@@ -1,9 +1,9 @@
-const fs = require('fs');
-const matter = require('gray-matter');
+import fs from 'fs';
+import matter from 'gray-matter';
 import isSameDay from 'date-fns/isSameDay';
 import isBefore from 'date-fns/isBefore';
-const React = require('react');
-const ReactDOMServer = require('react-dom/server');
+import React from 'react';
+import ReactDOMServer from 'react-dom/server';
 import { buildPage } from './build';
 // settings
 import { blogPagesLength } from '../blog/settings/blog';
