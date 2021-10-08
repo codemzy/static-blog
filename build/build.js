@@ -5,7 +5,7 @@ const ReactDOMServer = require('react-dom/server');
 require("@babel/register");
 
 // location where static content is published
-const distLocation = __dirname + '/dist/';
+const distLocation = __dirname + '/../dist/';
 
 // for creating directories if needed
 const createDirectory = function(path) {
@@ -40,4 +40,4 @@ exports.buildPage = function buildPage(path, html) {
 };
 
 // build the blog posts
-require("./build/posts.js");
+require("./posts.js");

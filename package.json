@@ -10,7 +10,7 @@
         "build": "npm run build-static && npm run build-css && npm run build-js",
         "build-css": "postcss css/*.css --dir dist/css --ext .min.css --env production",
         "build-js": "uglifyjs js/index.js --compress --mangle --comments '/^!/' --output dist/js/index.min.js",
-        "build-static": "node build.js"
+        "build-static": "node build/build.js"
     },
     "dependencies": {
         "react": "^17.0.1",

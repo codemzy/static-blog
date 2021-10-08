@@ -4,7 +4,7 @@ import isSameDay from 'date-fns/isSameDay';
 import isBefore from 'date-fns/isBefore';
 const React = require('react');
 const ReactDOMServer = require('react-dom/server');
-import {buildPage} from '../build';
+import { buildPage } from './build';
 import { blogPagesLength } from '../blog/settings/blog';
 
 // components
