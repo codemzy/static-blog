@@ -9,7 +9,7 @@ import Markdown from './Markdown';
 // utils
 import { createAuthorLink } from './List';
 // svg
-import { CheckIcon } from '../svg/Icons';
+import { ChevronRight } from '../svg/Icons';
 
 // homepage component
 function Post(props) {
@@ -20,7 +20,11 @@ function Post(props) {
                 <Nav />
                 <div className="p-5">
                     <div className="max-w-3xl mx-auto my-10">
-                        <p className="py-5"><a className="font-semibold text-lg md:text-xl" href={`/${props.categoryId}`}>{categories[props.categoryId].name}</a></p>
+                        <p className="py-5 flex items-center font-semibold text-lg md:text-xl">
+                            <a href={`/`}>Blog</a>
+                            { props.categoryId ? <ChevronRight width="20" height="20" /> : null }
+                            { props.categoryId ? <a href={`/${props.categoryId}`}>{categories[props.categoryId].name}</a> : null }
+                        </p>
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-snug md:leading-snug lg:leading-snug">{props.title}</h1>
                         <p className="md:text-lg py-10 prose">{props.updated ? "Updated" : "Written"} {createAuthorLink(props.authorId)} on {format(props.updated || props.published, 'MMMM do, yyyy')}</p>
                     </div>
