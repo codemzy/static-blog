@@ -16,6 +16,7 @@ function Main({ title, description, ...props }) {
             </head>
             <body>
                 { props.children }
+                <script src="/js/index.min.js" async></script>
             </body>
         </html>
     );

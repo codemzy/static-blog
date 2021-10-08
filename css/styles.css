@@ -4,7 +4,7 @@
 
 @layer components {
     .btn {
-        @apply inline-block text-lg text-center font-semibold px-4 py-2 whitespace-nowrap focus:outline-none;
+        @apply inline-block text-lg text-center font-semibold px-4 py-2 whitespace-nowrap focus:outline-none focus:ring;
     }
 
     .btn-primary {
