@@ -9,7 +9,7 @@
         "dev-css": "postcss css/*.css --dir dist/css --ext .min.css",
         "build": "npm run build-static && npm run build-css && npm run build-js",
         "build-css": "postcss css/*.css --dir dist/css --ext .min.css --env production",
-        "build-js": "uglifyjs js/index.js --compress --mangle --comments '/^!/' --output dist/js/index.min.js",
+        "build-js": "uglifyjs js/index.js --compress --mangle --comments '/^!/' --output dist/js/index.min.js && uglifyjs -mc -o dist/js/darkmode.min.js js/darkmode.js",
         "build-static": "node build/build.js"
     },
     "dependencies": {
