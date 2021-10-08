@@ -5,7 +5,9 @@ import isBefore from 'date-fns/isBefore';
 const React = require('react');
 const ReactDOMServer = require('react-dom/server');
 import { buildPage } from './build';
+// settings
 import { blogPagesLength } from '../blog/settings/blog';
+import categories from '../blog/settings/categories';
 
 // components
 import Post from '../blog/components/post/Post';
@@ -65,17 +67,27 @@ const buildListPages = function({category, list}) {
     let getPath = function({category, page}) {
         return `${category ? `${category}/` : ''}` + `${page > 1 ? "page/" : ''}` + `${page === 1 ? "index" : page}`
     };
+    let getProps = function(currentPage, list) {
+        return {
+            category: category,
+            pages: pages,
+            page: currentPage,
+            posts: list,
+            path: getPath({ category, currentPage }),
+            title: `${category ? categories[category].name : "All Posts"}${ page > 1 ? ` - Page ${currentPage} of ${pages}` : ""}`,
+        }
+    };
     list.map(function(post, i) {
         if (pageList.length === blogPagesLength) {
             // build the page
-            buildPage(getPath({ category, page }), ReactDOMServer.renderToStaticMarkup(<List category={category} posts={pageList} page={page} pages={pages} path={getPath({ category, page })} />));
+            buildPage(getPath({ category, page }), ReactDOMServer.renderToStaticMarkup(<List {...getProps(page, pageList)} />));
             pageList = []; // empty pageList
             page++; // next page number
         }
         pageList.push(post);
     });
     // final page
-    buildPage(getPath({ category, page }), ReactDOMServer.renderToStaticMarkup(<List category={category} posts={pageList} page={page} pages={pages} path={getPath({ category, page })} />));
+    buildPage(getPath({ category, page }), ReactDOMServer.renderToStaticMarkup(<List {...getProps(page, pageList)} />));
 };
 
 // create blog pages
@@ -93,5 +105,9 @@ let categorisedPosts = posts.reduce(function(acc, post) {
 
 // create category pages
 for (let category in categorisedPosts) {
-    buildListPages({ category, list: categorisedPosts[category]});
+    if (categories[category]) {
+        buildListPages({ category, list: categorisedPosts[category]});
+    } else {
+        console.warn(`The category ${category} hasn't been added the category settings, but has been added to a post. See settings/categories.`)
+    }
 }
