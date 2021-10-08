@@ -1,14 +1,14 @@
-const React = require('react');
+import React from 'react';
+import { blogName, blogDescription, metaDescription } from '../settings/blog';
 
-const defaultTitle = 'React Static - Simple static html creation with React.js and Tailwind.';
 // main component
-function Main({ title = defaultTitle, ...props }) {
+function Main({ title, description, ...props }) {
     return (
         <html lang="en">
             <head>
-                <title>{ title !== defaultTitle ? `${title} - React Static` : title }</title>
+                <title>{ title ? `${title} - ${blogName}` : blogName }</title>
                 <meta charSet="utf-8" />
-                <meta name="description" content={ props.description || "This is a default description that I came up with all by myself. Make sure you change it. "} />
+                <meta name="description" content={ description || metaDescription || blogDescription } />
                 <meta name='viewport' content='initial-scale=1.0, width=device-width' />
                 <link href="/css/styles.min.css" rel="stylesheet" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" />

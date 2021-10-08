@@ -73,8 +73,9 @@ const buildListPages = function({category, list}) {
             pages: pages,
             page: currentPage,
             posts: list,
-            path: getPath({ category, currentPage }),
+            path: getPath({ category, page: currentPage }),
             title: `${category ? categories[category].name : "All Posts"}${ page > 1 ? ` - Page ${currentPage} of ${pages}` : ""}`,
+            description: category ? categories[category].metaDescription || categories[category].description : false
         }
     };
     list.map(function(post, i) {
