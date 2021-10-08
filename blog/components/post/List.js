@@ -14,7 +14,7 @@ import { ArrowLeft, ArrowRight } from '../svg/Icons';
 // to create a link to author page if has a valid author
 export const createAuthorLink = function(authorId) {
     if (authorId && authors[authorId]) {
-        return <span>by <a href={`/authors/${authorId}`}>{authors[authorId].name}</a></span>
+        return <span>by <a href={`/author/${authorId}`}>{authors[authorId].name}</a></span>
     } else {
         return '';
     }
@@ -71,7 +71,7 @@ function Pager({page, pages, path}) {
 };
 
 // blog list page component
-function List({category, posts, page, pages, path, ...props}) {
+function List({category, author, posts, page, pages, path, ...props}) {
 
     return (
         <Main {...props}>
@@ -79,8 +79,13 @@ function List({category, posts, page, pages, path, ...props}) {
                 <Nav />
                 <div className="bg-gray-100 p-5">
                     <div className="max-w-3xl mx-auto text-center mt-10 py-10">
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-snug md:leading-snug lg:leading-snug xl:leading-snug">{category ? categories[category].name : blogName}</h1>
-                        <Markdown className="md:text-lg py-10 prose" type="div">{category && categories[category].description ? categories[category].description : blogDescription}</Markdown>
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-snug md:leading-snug lg:leading-snug xl:leading-snug">
+                            { category ? categories[category].name : author ? authors[author].name :  blogName }
+                        </h1>
+                        <Markdown className="md:text-lg py-10 prose" type="div">
+                            { category && categories[category].description ? categories[category].description : 
+                            author && authors[author].description ? authors[author].description : blogDescription }
+                        </Markdown>
                     </div>
                 </div>
                 <div className="m-5 flex-grow max-w-screen-lg lg:mx-auto lg:flex lg:flex-wrap">

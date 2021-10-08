@@ -8,6 +8,7 @@ import { buildPage } from './build';
 // settings
 import { blogPagesLength } from '../blog/settings/blog';
 import categories from '../blog/settings/categories';
+import authors from '../blog/settings/authors';
 
 // components
 import Post from '../blog/components/post/Post';
@@ -60,42 +61,44 @@ posts = posts.sort(function(a, b) {
 });
 
 // create list pages
-const buildListPages = function({category, list}) {
+const buildListPages = function({category, author, list}) {
     let page = 1;
     let pageList = [];
     let pages = Math.ceil(list.length/blogPagesLength);
-    let getPath = function({category, page}) {
-        return `${category ? `${category}/` : ''}` + `${page > 1 ? "page/" : ''}` + `${page === 1 ? "index" : page}`
+    let getPath = function(page) {
+        return `${category ? `${category}/` : author ? `author/${author}/` : ''}` + `${page > 1 ? "page/" : ''}` + `${page === 1 ? "index" : page}`
     };
     let getProps = function(currentPage, list) {
         return {
             category: category,
+            author: author,
             pages: pages,
             page: currentPage,
             posts: list,
-            path: getPath({ category, page: currentPage }),
-            title: `${category ? categories[category].name : "All Posts"}${ page > 1 ? ` - Page ${currentPage} of ${pages}` : ""}`,
-            description: category ? categories[category].metaDescription || categories[category].description : false
-        }
+            path: getPath(currentPage),
+            title: `${category ? categories[category].name : author ? authors[author].name : "All Posts"}${ page > 1 ? ` - Page ${currentPage} of ${pages}` : ""}`,
+            description: category ? categories[category].metaDescription || categories[category].description : 
+                author ? authors[author].metaDescription || authors[author].description : false
+        };
     };
     list.map(function(post, i) {
         if (pageList.length === blogPagesLength) {
             // build the page
-            buildPage(getPath({ category, page }), ReactDOMServer.renderToStaticMarkup(<List {...getProps(page, pageList)} />));
+            buildPage(getPath(page), ReactDOMServer.renderToStaticMarkup(<List {...getProps(page, pageList)} />));
             pageList = []; // empty pageList
             page++; // next page number
         }
         pageList.push(post);
     });
     // final page
-    buildPage(getPath({ category, page }), ReactDOMServer.renderToStaticMarkup(<List {...getProps(page, pageList)} />));
+    buildPage(getPath(page), ReactDOMServer.renderToStaticMarkup(<List {...getProps(page, pageList)} />));
 };
 
 // create blog pages
 buildListPages({ list: posts });
 
 // posts sorted by category
-let categorisedPosts = posts.reduce(function(acc, post) {
+let postsByCategory = posts.reduce(function(acc, post) {
     let key = post.categoryId;
     if (!acc[key]) {
         acc[key] = []; // create the key if it doesn't exist
@@ -105,10 +108,31 @@ let categorisedPosts = posts.reduce(function(acc, post) {
 }, {});
 
 // create category pages
-for (let category in categorisedPosts) {
-    if (categories[category]) {
-        buildListPages({ category, list: categorisedPosts[category]});
+for (let categoryId in postsByCategory) {
+    if (categories[categoryId]) {
+        buildListPages({ category: categoryId, list: postsByCategory[categoryId]});
     } else {
-        console.warn(`The category ${category} hasn't been added the category settings, but has been added to a post. See settings/categories.`)
+        console.warn(`The category ${categoryId} hasn't been added the category settings, but has been added to a post. See settings/categories.`)
     }
-}
+};
+
+// posts sorted by author
+let postsByAuthor = posts.reduce(function(acc, post) {
+    let key = post.authorId;
+    if (key) {
+        if (!acc[key]) {
+            acc[key] = []; // create the key if it doesn't exist
+        }
+        acc[key].push(post); // add the post to the author
+    }
+    return acc;
+}, {});
+
+// create author pages
+for (let authorId in postsByAuthor) {
+    if (authors[authorId]) {
+        buildListPages({ author: authorId, list: postsByAuthor[authorId]});
+    } else {
+        console.warn(`The author ${authorId} hasn't been added the author settings, but has been added to a post. See settings/authors.`)
+    }
+};
