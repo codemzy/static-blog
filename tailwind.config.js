@@ -22,7 +22,28 @@ module.exports = {
             typography: (theme) => ({
                 dark: {
                     css: {
-                        color: theme('colors.gray.400'),
+                        color: theme('colors.gray.400', colors.gray[400]),
+                        a: {
+                            color: theme('colors.gray.200', colors.gray[200]),
+                        },
+                        h1: {
+                            color: theme('colors.gray.200', colors.gray[200]),
+                        },
+                        h2: {
+                            color: theme('colors.gray.200', colors.gray[200]),
+                        },
+                        h3: {
+                            color: theme('colors.gray.200', colors.gray[200]),
+                        },
+                        h4: {
+                            color: theme('colors.gray.200', colors.gray[200]),
+                        },
+                        blockquote: {
+                            color: theme('colors.gray.200', colors.gray[900]),
+                        },
+                        'ul > li::before': {
+                            backgroundColor: theme('colors.gray.700', colors.gray[700]),
+                        }
                     }
                 }
             })

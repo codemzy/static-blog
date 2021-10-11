@@ -26,7 +26,7 @@ function Post(props) {
                             { props.categoryId ? <a href={`/${props.categoryId}`}>{categories[props.categoryId].name}</a> : null }
                         </p>
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-snug md:leading-snug lg:leading-snug">{props.title}</h1>
-                        <p className="md:text-lg py-10 prose">{props.updated ? "Updated" : "Written"} {createAuthorLink(props.authorId)} on {format(props.updated || props.published, 'MMMM do, yyyy')}</p>
+                        <p className="md:text-lg py-10 prose dark:prose-dark">{props.updated ? "Updated" : "Written"} {createAuthorLink(props.authorId)} on {format(props.updated || props.published, 'MMMM do, yyyy')}</p>
                     </div>
                     <div>
                         <div className="max-w-3xl mx-auto">

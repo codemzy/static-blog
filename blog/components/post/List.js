@@ -82,7 +82,7 @@ function List({category, author, posts, page, pages, path, ...props}) {
                         <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-snug md:leading-snug lg:leading-snug xl:leading-snug">
                             { category ? categories[category].name : author ? authors[author].name :  blogName }
                         </h1>
-                        <Markdown className="md:text-lg py-10 prose" type="div">
+                        <Markdown className="md:text-lg py-10 prose dark:prose-dark" type="div">
                             { category && categories[category].description ? categories[category].description : 
                             author && authors[author].description ? authors[author].description : blogDescription }
                         </Markdown>
@@ -95,9 +95,9 @@ function List({category, author, posts, page, pages, path, ...props}) {
                                 <div className="my-20" key={post.path}>
                                     <a href={`/${post.path}`}>
                                         <h2 className="font-bold text-2xl lg:text-4xl lg:leading-snug">{post.title}</h2>
-                                        <p className="my-5 prose">{post.description}</p>
+                                        <p className="my-5 prose dark:prose-dark">{post.description}</p>
                                     </a>
-                                    <p className="prose prose-sm">Written {createAuthorLink(post.authorId)} {createCategoryLink(post.categoryId)} on {format(post.date, 'MMMM do, yyyy')}</p>
+                                    <p className="prose prose-sm dark:prose-dark">Written {createAuthorLink(post.authorId)} {createCategoryLink(post.categoryId)} on {format(post.date, 'MMMM do, yyyy')}</p>
                                 </div>
                             );
                         })}
@@ -105,7 +105,7 @@ function List({category, author, posts, page, pages, path, ...props}) {
                     <div className="w-full my-5 lg:order-last lg:mt-auto"><Pager page={page} pages={pages} path={path} /></div>
                     <div className="lg:w-1/3 lg:p-5">
                         <div className="my-16">
-                            <h3 className="uppercase text-sm font-bold py-2 text-gray-900 text-opacity-70"><a href="/">Categories</a></h3>
+                            <h3 className="uppercase text-sm font-bold py-2 text-gray-500"><a href="/">Categories</a></h3>
                             <ul className="text-xl font-medium leading-loose">
                                 { Object.keys(categories).map(function(category) {
                                     return <li key={category}><a href={`/${category}`}>{categories[category].name}</a></li>
