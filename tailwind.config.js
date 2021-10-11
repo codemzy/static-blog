@@ -6,7 +6,7 @@ module.exports = {
        './blog/components/**/*.{js,ts,jsx,tsx}', 
        './js/**/*.{js,ts,jsx,tsx}',
     ],
-    darkMode: false, // or 'media' or 'class'
+    darkMode: 'class',
     theme: {
         extend: {
             colors: {
