@@ -6,7 +6,6 @@ import categories from '../../settings/categories';
 import authors from '../../settings/authors';
 // components
 import Main from '../Main';
-import Nav from '../Nav';
 import Markdown from './Markdown';
 // svg
 import { ArrowLeft, ArrowRight } from '../svg/Icons';
@@ -75,9 +74,8 @@ function List({category, author, posts, page, pages, path, ...props}) {
 
     return (
         <Main {...props}>
-            <div className="flex flex-col min-h-screen">
-                <Nav />
-                <div className="bg-gray-100 p-5">
+            <div className="flex flex-col flex-grow">
+                <div className="p-5">
                     <div className="max-w-3xl mx-auto text-center mt-10 py-10">
                         <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-snug md:leading-snug lg:leading-snug xl:leading-snug">
                             { category ? categories[category].name : author ? authors[author].name :  blogName }

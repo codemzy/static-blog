@@ -1,5 +1,8 @@
 import React from 'react';
 import { blogName, blogDescription, metaDescription } from '../settings/blog';
+// components
+import Nav from './Nav';
+import Footer from './Footer';
 
 // main component
 function Main({ title, description, ...props }) {
@@ -15,8 +18,10 @@ function Main({ title, description, ...props }) {
                 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
                 <script src="/js/darkmode.min.js"></script>
             </head>
-            <body className="text-gray-900 dark:bg-gray-900 dark:text-gray-200">
+            <body className="flex flex-col min-h-screen text-gray-900 dark:bg-gray-900 dark:text-gray-200">
+                <Nav />
                 { props.children }
+                <Footer />
             </body>
         </html>
     );

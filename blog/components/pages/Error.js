@@ -6,10 +6,10 @@ import Main from '../Main';
 function ErrorPage(props) {
     return (
         <Main {...props}>
-            <div className="text-gray-900 flex flex-col min-h-screen">
+            <div className="flex-grow flex flex-col">
                 <div className="max-w-3xl mx-auto my-auto text-center p-5">
                     <h1 className="text-red-600 text-3xl font-bold uppercase">{props.title}</h1>
-                    <div className="prose lg:prose-lg max-w-none my-10">
+                    <div className="prose lg:prose-lg dark:prose-dark max-w-none my-10">
                         <p>{props.description}</p>
                         <p>Explore the <a href="/">Blog.</a></p>
                     </div>
