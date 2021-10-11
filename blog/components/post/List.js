@@ -75,7 +75,7 @@ function List({category, author, posts, page, pages, path, ...props}) {
 
     return (
         <Main {...props}>
-            <div className="text-gray-900 flex flex-col min-h-screen">
+            <div className="flex flex-col min-h-screen">
                 <Nav />
                 <div className="bg-gray-100 p-5">
                     <div className="max-w-3xl mx-auto text-center mt-10 py-10">

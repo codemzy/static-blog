@@ -10,7 +10,8 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                yellow: colors.yellow
+                yellow: colors.yellow,
+                gray: colors.gray
             },
             fontFamily: {
                 sans: [

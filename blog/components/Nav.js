@@ -5,9 +5,9 @@ import { Sun, Moon } from '../components/svg/Icons';
 // dark mode button
 function DarkModeBtn() {
     return (
-        <button id="button-dark-mode" className="btn h-12 w-12 p-2 inline-flex items-center justify-center rounded-full bg-gray-100">
-            <Sun width="25" height="25" className="inline-block" />
-            <Moon width="25" height="25" className="inline-block hidden" />
+        <button id="button-dark-mode" className="h-12 w-12 p-1 inline-flex items-center justify-center rounded-full focus:outline-none hover:bg-gray-100 dark:hover:bg-gray-800 focus:bg-gray-100 dark:focus:bg-gray-800">
+            <Sun width="30" height="30" className="inline-block" />
+            <Moon width="30" height="30" className="inline-block hidden" />
         </button>
     );
 }

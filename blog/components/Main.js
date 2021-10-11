@@ -15,7 +15,7 @@ function Main({ title, description, ...props }) {
                 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
                 <script src="/js/darkmode.min.js"></script>
             </head>
-            <body>
+            <body className="text-gray-900 dark:bg-gray-900 dark:text-gray-200">
                 { props.children }
             </body>
         </html>
