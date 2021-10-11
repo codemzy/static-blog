@@ -31,7 +31,7 @@ function Post(props) {
                     <div>
                         <div className="max-w-3xl mx-auto">
                             <p className="text-lg lg:text-xl font-semibold">{props.description}</p>
-                            <Markdown className="prose lg:prose-lg max-w-none my-10" type="article">{props.content}</Markdown>
+                            <Markdown className="prose lg:prose-lg dark:prose-dark max-w-none my-10" type="article">{props.content}</Markdown>
                         </div>
                     </div>
                 </div>

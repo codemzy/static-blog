@@ -18,8 +18,20 @@ module.exports = {
                 'Poppins',
                 ...defaultTheme.fontFamily.sans,
                 ]
-            }
+            },
+            typography: (theme) => ({
+                dark: {
+                    css: {
+                        color: theme('colors.gray.400'),
+                    }
+                }
+            })
         },
+    },
+    variants: {
+        extend: {
+            typography: ['dark']
+        }
     },
     plugins: [
         require('@tailwindcss/typography'),
