@@ -33,4 +33,10 @@ Yeah it will be cool to see how that looks too.
 
 <cite>Codemzy - [Some link](#)</cite>
 
+And what about adding an image?
+
+![someone writing](https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1744&q=80)
+
+Yes, images work too! Don't host images in your git repo though, your repository will become massive. Host them somewhere else. The one above is hosted by [unsplash](https://unsplash.com/photos/npxXWgQ33ZQ) but you shouldn't do that in production either! I tend to put my images in a seperate place like AWS S3, DigitalOcean Spaces, or a seperate Netlify site (manually uploaded) and then proxy the URL I want them on. 
+
 The end.
