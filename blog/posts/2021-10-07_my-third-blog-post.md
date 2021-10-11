@@ -30,7 +30,7 @@ and...
 Yeah it will be cool to see how that looks too.
 
 > I'm also wondering how a blockquote will look
->
-> -- Codemzy
+
+<cite>Codemzy - [Some link](#)</cite>
 
 The end.
