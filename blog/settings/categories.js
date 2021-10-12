@@ -9,10 +9,6 @@
 // if the blog doesn't need categories, empty the categories object e.g const categories = {};
 
 const categories = {
-    "guides": {
-        name: "Guides",
-        description: "",
-    },
     "news": { 
         name: "News",
         description: "Read all the latest news and announcements.",
