@@ -12,8 +12,10 @@ const renderer = {
     list(body, ordered, start) {
         // return letter lists
         if (!ordered && body.match(/^<li>[a-z]\)<\/li>/)) {
-            const start = body.match(/^<li>(?<letter>[a-z])\)<\/li>/).groups.letter.charCodeAt(0) - 96;
-            return body.replace(/^<li>[a-z]\)<\/li>(.*)/gms, `<ol type="a" start="${start}">$1</ol>`);
+            let match = body.match(/^<li>(?<letter>[a-z])\)<\/li>(?<list>[\w\W]+)?/m); // check if it's a letter list
+            if (match && match.groups && match.groups.letter) {
+                return `<ol type="a" start="${match.groups.letter.charCodeAt(0) - 96}">${match.groups.list}</ol>`;
+            }
         }
         return false; // return default
     },

@@ -11,12 +11,30 @@ updated: false
 
 It's written in markdown, but has a few extra features you should know about.
 
-- Videos
-- Letter lists
+### Letter Lists
 
 - a)
-- a
-- letter
-- list
+- Lists 
+- With
+- Letters
+
+```
+- a)
+- Lists 
+- With
+- Letters
+```
+
+### Quotes with captions
+
+> Quotes with captions. Yep, you can cite.
+>
+> -- Codemzy in - This is my first blog post and it will be epic!
+
+```
+> Quotes with captions. Yep, you can cite.
+>
+> -- Codemzy in - This is my first blog post and it will be epic!
+```
 
 I may add more extra features in the future, but like with any markdown, if you need something that's not available, you can embed your own HTML anyway. So don't worry about it!
