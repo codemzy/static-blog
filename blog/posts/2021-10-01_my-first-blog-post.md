@@ -13,6 +13,8 @@ It's written in markdown, but has a few extra features you should know about.
 
 ### Letter Lists
 
+I've tweaked the markdown slightly to add letter lists, as this is something I use in blog posts from time to time.
+
 - a)
 - Lists 
 - With
@@ -26,6 +28,8 @@ It's written in markdown, but has a few extra features you should know about.
 ```
 
 ### Quotes with captions
+
+You can add a quote as normal, but if you want to include a caption with an author and cite, you can do that too. Use `--` to the last line to add a caption, and use `-` within the caption to add a cite. The blockquote will come out wrap in a `<figure>` with a `<figcaption>`.
 
 > Quotes with captions. Yep, you can cite.
 >
