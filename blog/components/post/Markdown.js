@@ -4,12 +4,19 @@ import marked from 'marked';
 const renderer = {
     blockquote(quote) {
         let match = quote.match(/(?<quote>[\w\W]+)?(?:<p>-- (?<caption>[^-]+)(?:- (?<cite>.*))?<\/p>)/m);
-        if (!match || !match.groups) {
-            return `<blockquote>${quote}</blockquote>`;
-        } else {
+        if (match && match.groups) {
             return `<figure><blockquote>${match.groups.quote}</blockquote><figcaption>- ${match.groups.caption} ${ match.groups.cite ? `<cite>${match.groups.cite}</cite>` : '' }</figcaption></figure>`;
         }
-    }
+        return false; // return default if no caption
+    },
+    list(body, ordered, start) {
+        // return letter lists
+        if (!ordered && body.match(/^<li>[a-z]\)<\/li>/)) {
+            const start = body.match(/^<li>(?<letter>[a-z])\)<\/li>/).groups.letter.charCodeAt(0) - 96;
+            return body.replace(/^<li>[a-z]\)<\/li>(.*)/gms, `<ol type="a" start="${start}">$1</ol>`);
+        }
+        return false; // return default
+    },
 };
 
 marked.use({ renderer });

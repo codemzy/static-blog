@@ -14,4 +14,9 @@ It's written in markdown, but has a few extra features you should know about.
 - Videos
 - Letter lists
 
+- a)
+- a
+- letter
+- list
+
 I may add more extra features in the future, but like with any markdown, if you need something that's not available, you can embed your own HTML anyway. So don't worry about it!
