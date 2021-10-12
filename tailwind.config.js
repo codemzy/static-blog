@@ -33,6 +33,7 @@ module.exports = {
                             paddingBottom: '.5rem',
                             position: 'relative',
                             marginLeft: '1.25rem',
+                            fontFamily: 'Georgia,Times New Roman,Times,serif',
                         },
                         'blockquote::before': {
                             position: 'absolute',
@@ -46,7 +47,11 @@ module.exports = {
                         'blockquote p:last-of-type::after': {
                             content: '',
                         },
-
+                        'figure figcaption': {
+                            textAlign: 'right',
+                            marginLeft: '.5rem',
+                            marginRight: '.5rem',
+                        },
                     }
                 },
                 lg: {

@@ -29,14 +29,28 @@ and...
 
 Yeah it will be cool to see how that looks too.
 
-> I'm also wondering how a blockquote will look
+> I'm also wondering how a blockquote will look. Turns out pretty good.
+>
+> -- Test - The Best
 
-<cite>Codemzy - [Some link](#)</cite>
+> And without a caption? Not bad either!
 
 And what about adding an image?
 
 ![someone writing](https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1744&q=80)
 
 Yes, images work too! Don't host images in your git repo though, your repository will become massive. Host them somewhere else. The one above is hosted by [unsplash](https://unsplash.com/photos/npxXWgQ33ZQ) but you shouldn't do that in production either! I tend to put my images in a seperate place like AWS S3, DigitalOcean Spaces, or a seperate Netlify site (manually uploaded) and then proxy the URL I want them on. 
+
+And a video?
+
+<figure class="video-container">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</figure>
+
+And what about code?
+
+```
+let this = "some code";
+```
 
 The end.
