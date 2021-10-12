@@ -41,4 +41,22 @@ You can add a quote as normal, but if you want to include a caption with an auth
 > -- Codemzy in - This is my first blog post and it will be epic!
 ```
 
+### Highlighted code
+
+Using Prismjs behing the scenes to highlight some javascript!
+
+```javascript
+let string = "Testing";
+console.log(string); // Testing
+```
+
+I've configured this to only happen if you pass a language.
+
+````
+```javascript
+let string = "Testing";
+console.log(string); // Testing
+```
+````
+
 I may add more extra features in the future, but like with any markdown, if you need something that's not available, you can embed your own HTML anyway. So don't worry about it!

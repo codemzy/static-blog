@@ -49,7 +49,7 @@ And a video?
 
 And what about code?
 
-```
+```js
 let this = "some code";
 ```
 

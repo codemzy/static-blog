@@ -14,7 +14,7 @@ import { ChevronRight } from '../svg/Icons';
 function Post(props) {
 
     return (
-        <Main {...props}>
+        <Main {...props} head={<link href="/css/prism.min.css" rel="stylesheet" />}>
             <div className="p-5">
                 <div className="max-w-3xl mx-auto my-10">
                     <p className="py-5 flex items-center font-semibold text-lg md:text-xl">
