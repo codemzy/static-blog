@@ -91,8 +91,8 @@ function List({category, author, posts, page, pages, path, ...props}) {
                         {posts.map(function(post) {
                             return (
                                 <div className="my-20" key={post.path}>
-                                    <a href={`/${post.path}`}>
-                                        <h2 className="font-bold text-2xl lg:text-4xl lg:leading-snug">{post.title}</h2>
+                                    <a href={`/${post.path}`} className="group focus:outline-none">
+                                        <h2 className="font-bold text-2xl lg:text-4xl lg:leading-snug group-hover:underline group-focus:underline">{post.title}</h2>
                                         <p className="my-5 prose dark:prose-dark">{post.description}</p>
                                     </a>
                                     <p className="prose prose-sm dark:prose-dark">Written {createAuthorLink(post.authorId)} {createCategoryLink(post.categoryId)} on {format(post.date, 'MMMM do, yyyy')}</p>

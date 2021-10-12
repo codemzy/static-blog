@@ -96,7 +96,8 @@ module.exports = {
     },
     variants: {
         extend: {
-            typography: ['dark']
+            typography: ['dark'],
+            textDecoration: ['group-focus'],
         }
     },
     plugins: [
