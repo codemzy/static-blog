@@ -11,20 +11,15 @@ function setDarkMode(dark, preference) {
         // change to light mode by removing class from <html> element
         document.documentElement.classList.remove('dark');
     }
-    // update the button by swapping hidden classes on svgs
-    let currentIcon = document.querySelector('#button-dark-mode svg:not(.hidden)');
-    let hiddenIcon = document.querySelector('#button-dark-mode svg.hidden');
-    currentIcon.classList.add('hidden');
-    hiddenIcon.classList.remove('hidden');
 };
 
-
-// on load
+// check if we need to add dark class from theme or OS preference
+const preference = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+if (localStorage.getItem('theme') === "dark" || (!('theme' in localStorage) && preference === 'dark')) {
+    setDarkMode(true, preference);
+}
+// on load add the event listener to the button
 window.onload = function () {
-    const preference = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    if (localStorage.getItem('theme') === "dark" || (!('theme' in localStorage) && preference === 'dark')) {
-        setDarkMode(true, preference);
-    }
     document.getElementById('button-dark-mode').addEventListener('click', function() {
         setDarkMode(!document.documentElement.classList.contains('dark'), preference);
     });
