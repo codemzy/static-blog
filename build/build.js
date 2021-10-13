@@ -5,7 +5,7 @@ const ReactDOMServer = require('react-dom/server');
 require("@babel/register");
 
 // location where static content is published
-const distLocation = __dirname + '/../dist/';
+const distLocation = __dirname + '/../dist';
 
 // for creating directories if needed
 const createDirectory = function(path) {
@@ -16,8 +16,8 @@ const createDirectory = function(path) {
 };
 
 // create dist directory for js so that js build works
-createDirectory(distLocation + 'js');
-createDirectory(distLocation + 'css');
+createDirectory(distLocation + '/js');
+createDirectory(distLocation + '/css');
 
 minifyOptions = {
     collapseWhitespace: true,
@@ -27,6 +27,7 @@ minifyOptions = {
 };
 
 exports.buildPage = function buildPage(path, html) {
+    path = path.charAt(0) !== "/" ? "/" + path : path; // add slash if needed
     let filepath = distLocation + path + '.html'; // the location for the file
     createDirectory(filepath); // create directory if needed
     fs.writeFile(filepath, '<!DOCTYPE html>\n' + minify(html, minifyOptions), function(err) {
