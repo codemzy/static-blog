@@ -1,6 +1,7 @@
 import React from 'react';
 import format from 'date-fns/format';
 // settings
+import { blogUrl } from '../../settings/blog';
 import categories from '../../settings/categories';
 // components
 import Main from '../Main';
@@ -18,9 +19,9 @@ function Post(props) {
             <div className="p-5">
                 <div className="max-w-3xl mx-auto my-10">
                     <p className="py-5 flex items-center font-semibold text-lg md:text-xl">
-                        <a href={`/`}>Blog</a>
+                        <a href={`${blogUrl}/`}>Blog</a>
                         { props.categoryId ? <ChevronRight width="20" height="20" /> : null }
-                        { props.categoryId ? <a href={`/${props.categoryId}`}>{categories[props.categoryId].name}</a> : null }
+                        { props.categoryId ? <a href={`${blogUrl}/${props.categoryId}`}>{categories[props.categoryId].name}</a> : null }
                     </p>
                     <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-snug md:leading-snug lg:leading-snug">{props.title}</h1>
                     <p className="md:text-lg py-10 prose dark:prose-dark">{props.updated ? "Updated" : "Written"} {createAuthorLink(props.authorId)} on {format(props.updated || props.published, 'MMMM do, yyyy')}</p>

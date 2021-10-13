@@ -1,7 +1,7 @@
 import React from 'react';
 import format from 'date-fns/format';
 // settings
-import {blogName, blogDescription} from '../../settings/blog';
+import {blogUrl, blogName, blogDescription} from '../../settings/blog';
 import categories from '../../settings/categories';
 import authors from '../../settings/authors';
 // components
@@ -13,7 +13,7 @@ import { ArrowLeft, ArrowRight } from '../svg/Icons';
 // to create a link to author page if has a valid author
 export const createAuthorLink = function(authorId) {
     if (authorId && authors[authorId]) {
-        return <span>by <a href={`/author/${authorId}`}>{authors[authorId].name}</a></span>
+        return <span>by <a href={`${blogUrl}/author/${authorId}`}>{authors[authorId].name}</a></span>
     } else {
         return '';
     }
@@ -22,7 +22,7 @@ export const createAuthorLink = function(authorId) {
 // to create a link to category page if has a valid category
 const createCategoryLink = function(categoryId) {
     if (categoryId && categories[categoryId]) {
-        return <span>in <a href={`/${categoryId}`}>{categories[categoryId].name}</a></span>
+        return <span>in <a href={`${blogUrl}/${categoryId}`}>{categories[categoryId].name}</a></span>
     } else {
         return '';
     }

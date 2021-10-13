@@ -1,3 +1,11 @@
+// blog location
+// personally I prefer to use the "/blog" subdirectory so that I can have other stuff on the site
+// and then blog posts are like www.yoursite.com/blog/post-name rather than www.yoursite.com/post-name
+// but if your whole site is a blog primarily you might want to leave this as is and have the index page as the blog landing page
+// post urls will be www.theblogsite.com/post-name or if you are hosting on subdomain like blog.yoursite.com/post-name
+// if you do use "/blog" make sure you create a custom index page and wire it up in build/pages
+export const blogUrl = "";
+
 // The name of the blog
 export const blogName = "The Static Blog";
 
