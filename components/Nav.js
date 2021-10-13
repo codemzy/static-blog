@@ -1,7 +1,7 @@
 import React from 'react';
 import { blogName } from '../settings/blog';
 // svg
-import { Sun, Moon } from '../components/svg/Icons';
+import { Sun, Moon } from './svg/Icons';
 
 // dark mode button
 function DarkModeBtn() {

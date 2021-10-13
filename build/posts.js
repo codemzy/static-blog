@@ -6,20 +6,20 @@ import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { buildPage } from './build';
 // settings
-import { blogPagesLength } from '../blog/settings/blog';
-import categories from '../blog/settings/categories';
-import authors from '../blog/settings/authors';
+import { blogPagesLength } from '../settings/blog';
+import categories from '../settings/categories';
+import authors from '../settings/authors';
 
 // components
-import Post from '../blog/components/post/Post';
-import List from '../blog/components/post/List';
+import Post from '../components/blog/Post';
+import List from '../components/blog/List';
 
 // for storing a list of all the blog posts
 let posts = [];
 
 // fetch all the blog posts
-fs.readdirSync(__dirname + '/../blog/posts').forEach(filename => {
-    const blogContent = fs.readFileSync(`${__dirname + '/../blog/posts'}/${filename}`, "utf8");
+fs.readdirSync(__dirname + '/../posts').forEach(filename => {
+    const blogContent = fs.readFileSync(`${__dirname + '/../posts'}/${filename}`, "utf8");
     const {data, content} = matter(blogContent);
     const [date, path, ext] = filename.split(/[_.]/);
     data.published = new Date(data.published);
