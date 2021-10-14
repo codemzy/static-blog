@@ -11,7 +11,7 @@ import { createAuthorLink } from './List';
 // svg
 import { ChevronRight } from '../svg/Icons';
 
-// homepage component
+// blog post component
 function Post(props) {
 
     return (
