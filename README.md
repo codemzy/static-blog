@@ -29,6 +29,8 @@ You're going to need NodeJS installed for the dev server (but since this is stat
 
 Now go to the `/settings` directory. In `/settings/blog.js` add the name for the blog and decide if you want your blog as the main site or in subdirectory like `/blog`. There's a bunch of notes in there to help.
 
+First run `npm install` to install the dependencies needed to build the blog.
+
 To preview your blog run `npm run dev-build` followed by `npm run dev` to see your blog on port 8080 (http://localhost:8080). No hot reloading currently so if you add a new post run `npm run build-static` to create a new build and `npm run dev` to start the server again. 
 
 ## Blog
