@@ -6,7 +6,7 @@ import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { buildPage } from './build';
 // settings
-import { blogPagesLength } from '../settings/blog';
+import { blogPath, blogPagesLength } from '../settings/blog';
 import categories from '../settings/categories';
 import authors from '../settings/authors';
 
@@ -51,6 +51,7 @@ fs.readdirSync(__dirname + '/../posts').forEach(filename => {
 
 // map over posts array and create all the blog post pages
 posts = posts.map(function(post) {
+    post.path = `${blogPath}/${post.path}`; // add the blog path
     buildPage(post.path, ReactDOMServer.renderToStaticMarkup(<Post {...post.data} content={post.content} />));
     return { path: post.path, date: post.latestDate, ...post.data }; // don't need the content anymore just the data
 });
@@ -66,7 +67,7 @@ const buildListPages = function({category, author, list}) {
     let pageList = [];
     let pages = Math.ceil(list.length/blogPagesLength);
     let getPath = function(page) {
-        return `${category ? `${category}/` : author ? `author/${author}/` : ''}` + `${page > 1 ? "page/" : ''}` + `${page === 1 ? "index" : page}`
+        return `${blogPath}/${category ? `${category}/` : author ? `author/${author}/` : ''}` + `${page > 1 ? "page/" : ''}` + `${page === 1 ? "index" : page}`
     };
     let getProps = function(currentPage, list) {
         return {

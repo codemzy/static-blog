@@ -1,7 +1,7 @@
 import React from 'react';
 import format from 'date-fns/format';
 // settings
-import {blogUrl, blogName, blogDescription} from '../../settings/blog';
+import {blogPath, blogName, blogDescription} from '../../settings/blog';
 import categories from '../../settings/categories';
 import authors from '../../settings/authors';
 // components
@@ -13,16 +13,16 @@ import { ArrowLeft, ArrowRight } from '../svg/Icons';
 // to create a link to author page if has a valid author
 export const createAuthorLink = function(authorId) {
     if (authorId && authors[authorId]) {
-        return <span>by <a href={`${blogUrl}/author/${authorId}`}>{authors[authorId].name}</a></span>
+        return <span>by <a href={`${blogPath}/author/${authorId}`}>{authors[authorId].name}</a></span>
     } else {
         return '';
     }
-}
+};
 
 // to create a link to category page if has a valid category
 const createCategoryLink = function(categoryId) {
     if (categoryId && categories[categoryId]) {
-        return <span>in <a href={`${blogUrl}/${categoryId}`}>{categories[categoryId].name}</a></span>
+        return <span>in <a href={`${blogPath}/${categoryId}`}>{categories[categoryId].name}</a></span>
     } else {
         return '';
     }
@@ -91,7 +91,7 @@ function List({category, author, posts, page, pages, path, ...props}) {
                         {posts.map(function(post) {
                             return (
                                 <div className="my-20" key={post.path}>
-                                    <a href={`/${post.path}`} className="group focus:outline-none">
+                                    <a href={`${post.path}`} className="group focus:outline-none">
                                         <h2 className="font-bold text-2xl lg:text-4xl lg:leading-snug group-hover:underline group-focus:underline">{post.title}</h2>
                                         <p className="my-5 prose dark:prose-dark">{post.description}</p>
                                     </a>
@@ -103,10 +103,10 @@ function List({category, author, posts, page, pages, path, ...props}) {
                     <div className="w-full my-5 lg:order-last lg:mt-auto"><Pager page={page} pages={pages} path={path} /></div>
                     <div className="lg:w-1/3 lg:p-5">
                         <div className="my-16">
-                            <h3 className="uppercase text-sm font-bold py-2 text-gray-500"><a href="/">Categories</a></h3>
+                            <h3 className="uppercase text-sm font-bold py-2 text-gray-500"><a href={blogPath || "/"}>Categories</a></h3>
                             <ul className="text-xl font-medium leading-loose">
                                 { Object.keys(categories).map(function(category) {
-                                    return <li key={category}><a href={`/${category}`}>{categories[category].name}</a></li>
+                                    return <li key={category}><a href={`${blogPath}/${category}`}>{categories[category].name}</a></li>
                                 })}
                             </ul>
                         </div>
