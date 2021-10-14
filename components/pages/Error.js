@@ -11,7 +11,7 @@ function ErrorPage(props) {
                     <h1 className="text-red-600 text-3xl font-bold uppercase">{props.title}</h1>
                     <div className="prose lg:prose-lg dark:prose-dark max-w-none my-10">
                         <p>{props.description}</p>
-                        <p>Explore the <a href="/">Blog.</a></p>
+                        <p>Let's go <a href="/">Home.</a></p>
                     </div>
                 </div>
             </div>
