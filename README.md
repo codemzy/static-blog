@@ -23,7 +23,7 @@ No hot reloading, no complex webpack set up. It's static. It turns React and Mar
 
 ## Set Up
 
-Click the 'use this template' button to create a new repository for your blog. Give it a name, and then clone your new repo to your dev environment (local or in the cloud like Gitpod or Glitch). But it's a bit tricky to get updates from a template repo as your new repo will have a different git history.
+You can the 'use this template' button to create a new repository for your blog. Give it a name, and then clone your new repo to your dev environment (local or in the cloud like Gitpod or Glitch). It's a bit tricky to get updates from a template repo as your new repo will have a different git history. **If you want to get updates as I add them to this template, it might be best to clone the repo (rather than the 'use this template').** Alternatively if you use the template, when I add a new feature you can download the new template, and add back in your posts and customisations. I'm going to leave that choice up to you!
 
 You're going to need NodeJS installed for the dev server (but since this is static, in production no servers are required).
 
