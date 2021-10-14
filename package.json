@@ -1,22 +1,17 @@
 {
-    "name": "blog",
+    "name": "static-blog",
     "version": "1.0.0",
     "description": "A simple react static blog builder.",
     "author": "codemzy",
-    "license": "UNLICENSED",
+    "license": "MIT",
     "scripts": {
         "dev": "NODE_ENV=development node server.js",
+        "dev-build": "npm run build-static && npm run dev-css && npm run build-js",
         "dev-css": "postcss css/*.css --dir dist/css --ext .min.css",
         "build": "npm run build-static && npm run build-css && npm run build-js",
         "build-css": "postcss css/*.css --dir dist/css --ext .min.css --env production",
         "build-js": "uglifyjs js/index.js --compress --mangle --comments '/^!/' --output dist/js/index.min.js && uglifyjs -mc -o dist/js/darkmode.min.js js/darkmode.js",
         "build-static": "node build/build.js"
-    },
-    "dependencies": {
-        "react": "^17.0.1",
-        "react-dom": "^17.0.1",
-        "react-router-dom": "^5.2.0",
-        "validator": "^13.5.2"
     },
     "devDependencies": {
         "@babel/core": "^7.12.13",
@@ -37,7 +32,11 @@
         "postcss-cli": "^8.3.1",
         "postcss-import": "^14.0.0",
         "prismjs": "^1.25.0",
+        "react": "^17.0.1",
+        "react-dom": "^17.0.1",
+        "react-router-dom": "^5.2.0",
         "tailwindcss": "^2.0.2",
-        "uglify-js": "^3.13.5"
+        "uglify-js": "^3.13.5",
+        "validator": "^13.5.2"
     }
 }

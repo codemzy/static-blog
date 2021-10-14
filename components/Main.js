@@ -23,6 +23,10 @@ function Main({ title, description, ...props }) {
                 <Nav />
                 { props.children }
                 <Footer />
+                {
+                    // uncomment this to add your custom javascript 
+                    // <script src="/js/index.min.js" async></script>
+                }
             </body>
         </html>
     );
