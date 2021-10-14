@@ -47,6 +47,10 @@ I've included some example blog posts to get started.
 
 You can customise categories (`/settings/categories.js`) and authors (`/settings/authors.js`) or remove them if you don't need/want them.
 
+## Deploy
+
+To deploy `npm run build` will create the production build, which will be in the `/dist` directory.
+
 ---
 
 **Optional Extras**
@@ -74,7 +78,3 @@ If you make changes to the css run `npm run dev-css` and `npm run dev` to see th
 You can add any custom Javascript for your site in `/js/index.js`. Then in `/components/Main.js` uncomment the `<script src="/js/index.min.js" async></script>` tag in the body.
 
 If you make changes to the css run `npm run build-js` and `npm run dev` to see the updates.
-
-## Deploy
-
-To deploy `npm run build` will create the production build, which will be in the `/dist` directory.
