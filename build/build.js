@@ -7,6 +7,11 @@ require("@babel/register");
 // location where static content is published
 const distLocation = __dirname + '/../dist';
 
+// deletes dist for full rebuild
+if (process.env.BUILD && fs.existsSync(distLocation)) {
+    fs.rmdirSync(distLocation, { recursive: true, force: true });
+};
+
 // for creating directories if needed
 const createDirectory = function(path) {
     const directory = path.replace(/\/([\w-]*)\.([\w]*)$/, '');

@@ -37,7 +37,9 @@ Now go to the `/settings` directory. In `/settings/blog.js` add the name for the
 
 First run `npm install` to install the dependencies needed to build the blog.
 
-To preview your blog run `npm run dev-build` followed by `npm run dev` to see your blog on port 8080 (http://localhost:8080). No hot reloading currently so if you add a new post run `npm run build-static` to create a new build and `npm run dev` to start the server again. 
+To preview your blog run `npm run dev-build` followed by `npm run dev` to see your blog on port 8080 (http://localhost:8080). No hot reloading currently so if you add a new post run `npm run build-static` to create a new build if your pages and `npm run dev` to start the server again. 
+
+Note: `npm run build-static` will just build the pages, not the css or js. If you make changes to any settings, css or js, you can run `npm run dev-build` to create a clean fresh build of everything.
 
 ## Blog
 

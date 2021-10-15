@@ -6,7 +6,7 @@
     "license": "MIT",
     "scripts": {
         "dev": "NODE_ENV=development node server.js",
-        "dev-build": "npm run build-static && npm run dev-css && npm run build-js",
+        "dev-build": "BUILD=true npm run build-static && npm run dev-css && npm run build-js",
         "dev-css": "postcss css/*.css --dir dist/css --ext .min.css",
         "build": "npm run build-static && npm run build-css && npm run build-js",
         "build-css": "postcss css/*.css --dir dist/css --ext .min.css --env production",
