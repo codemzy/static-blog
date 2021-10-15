@@ -1,5 +1,4 @@
 import React from 'react';
-import format from 'date-fns/format';
 import formatRFC7231 from 'date-fns/formatRFC7231';
 // settings
 import { blogDomain, blogPath, blogName, blogDescription, metaDescription } from '../../settings/blog';;
@@ -18,7 +17,7 @@ function Feed({posts = []}) {
                             <title>{post.title}</title>
                             <link>{`${blogDomain}${post.path}`}</link>
                             <guid>{`${blogDomain}${post.path}`}</guid>
-                            <pubDate>{format(new Date(post.date), 'E, dd LLL yyyy HH:mm:ss xxxx')}</pubDate>
+                            <pubDate>{formatRFC7231(new Date(post.date))}</pubDate>
                             <description>{post.description}</description>
                         </item>
                     )
