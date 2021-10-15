@@ -13,6 +13,7 @@ And coming soon...
 - Popular posts
 - Search
 - Social sharing
+- Themes (One day... Maybe!)
 
 It also comes with Tailwind installed as default for some beautiful css.
 
