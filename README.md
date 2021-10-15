@@ -11,6 +11,7 @@ Just a template to create a really simple static blog site using React. Yes, I k
 And coming soon...
 
 - Popular posts
+- Search
 - Social sharing
 
 It also comes with Tailwind installed as default for some beautiful css.
