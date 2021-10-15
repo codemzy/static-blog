@@ -2,11 +2,12 @@ import fs from 'fs';
 import matter from 'gray-matter';
 import isSameDay from 'date-fns/isSameDay';
 import isBefore from 'date-fns/isBefore';
+import formatRFC7231 from 'date-fns/formatRFC7231';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { buildPage } from './build';
 // settings
-import { blogPath, blogPagesLength } from '../settings/blog';
+import { blogDomain, blogPath, blogName, blogDescription, metaDescription, blogPagesLength } from '../settings/blog';
 import categories from '../settings/categories';
 import authors from '../settings/authors';
 
@@ -138,9 +139,24 @@ for (let authorId in postsByAuthor) {
     }
 };
 
-// create RSS feed
-// get 20 most recent posts
-let rssRecent = posts.slice(0, 20).map(function(post) {
-    post.date = moment(post.date).format('ddd, D MMM YYYY') + " 09:00:00 GMT";
-    return post;
-});
+// create RSS feed of 20 most recent posts
+let xmlContent = `<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+<channel>
+    <title>{blogName} RSS Feed</title>
+    <link>${blogDomain}${blogPath}</link>
+    <description>${blogName} rss feed. ${metaDescription || blogDescription}</description>
+    ${ posts.slice(0, 20).map(function(post, i) { 
+    return (
+    `<item>
+        <title>${post.title}</title>
+        <link>${blogDomain}${post.path}</link>
+        <guid>${blogDomain}${post.path}</guid>
+        <pubDate>${formatRFC7231(new Date(post.date))}</pubDate>
+        <description>${post.description}</description>
+    </item>
+    `);
+    }).join("").trimEnd() }
+</channel>
+</rss>`;
+buildPage(`${blogPath}/rss`, xmlContent, 'xml');

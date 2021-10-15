@@ -9,7 +9,7 @@ const distLocation = __dirname + '/../dist';
 
 // for creating directories if needed
 const createDirectory = function(path) {
-    const directory = path.replace(/\/([\w-]*).html/, '');
+    const directory = path.replace(/\/([\w-]*)\.([\w]*)/, '');
     if (!fs.existsSync(directory)) {
         fs.mkdirSync(directory, { recursive: true });
     }
