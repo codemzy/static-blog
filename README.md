@@ -5,6 +5,8 @@ Just a template to create a really simple static blog site using React. Yes, I k
 - Scheduled posts
 - Category pages
 - Author pages
+- JSON-LD schema scripts on blog posts
+- RSS feed builder
 
 And coming soon...
 
@@ -42,6 +44,24 @@ This is where you should start. If you're not building a blog, this probably isn
 In the /posts directory you will add your blog posts in markdown format. Use YAML at the top to provide information about the post (title, description etc.)
 
 The file name format is `YYYY-MM-DD_the-blog-post-path.md` with the date being the date for publishing the post. If you want to schedule a post for a future date, use the future date and the post won't go live until you build the site on that date or after.
+
+The YAML format is as follows (don't include any markdown in your YAML data)
+
+```
+---
+title: This is the blog post in title
+description: This is a description about the blog post. It will be the introductory paragraph used in search results, on blog list pages, and at the top of the blog post. It's pretty important.
+categoryId: 'product-x' // (optional)
+authorId: 'codemzy' // (optional)
+published: 'YYYY-MM-DD' // (ISO Format include also if you want to '2021-10-01T14.30)
+updated: false // include an updated date here if you are updating an old post
+---
+
+## Now we can use markdown
+
+Let's write a blog post...
+
+```
 
 If you want schedule and update a post, don't alter the orginal file. Use the same blog post path as the original post, and change the date to the date for the scheduled update (you will have two files, one with the orginal post that stays live and one with the updated post which will go live once the date is reached and replace the orginal post).
 

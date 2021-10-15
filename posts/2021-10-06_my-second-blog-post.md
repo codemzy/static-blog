@@ -4,7 +4,6 @@ description: This is a description about the blog post. It will be the introduct
 categoryId: 'news'
 authorId: 'codemzy'
 published: '2021-10-06'
-updated: false
 ---
 
 ## This is the first header

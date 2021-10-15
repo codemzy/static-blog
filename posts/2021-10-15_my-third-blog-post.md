@@ -4,7 +4,7 @@ description: This is a description about the blog post. It will be the introduct
 categoryId: 'news'
 authorId: 'codemzy'
 published: '2021-10-07'
-updated: false
+updated: '2021-10-15'
 ---
 
 I'm writing a third blog post so I can add pagination to the main blog list and the categories. This is essential for any blog that needs more than a few posts. Everything after this sentence is just a repeat of my second blog post. Not good for SEO, but this isnt public, so it will do the job for now. 

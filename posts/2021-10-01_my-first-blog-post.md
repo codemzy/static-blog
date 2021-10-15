@@ -4,7 +4,6 @@ description: This is a description about the blog post. It will be the introduct
 categoryId: 'product-x'
 authorId: 'codemzy'
 published: '2021-10-01'
-updated: false
 ---
 
 ## This is the blog content
