@@ -26,6 +26,7 @@ module.exports = {
                             color: theme('colors.gray.900', colors.gray[900]),
                             backgroundColor: theme('colors.gray.50', colors.gray[50]),
                             borderLeftWidth: '0',
+                            borderRadius: '.375rem',
                             quotes: null,
                             paddingLeft: '2rem',
                             paddingRight: '2rem',
@@ -51,6 +52,12 @@ module.exports = {
                             textAlign: 'right',
                             marginLeft: '.5rem',
                             marginRight: '.5rem',
+                        },
+                        img: {
+                            borderRadius: '.375rem',
+                        },
+                        '.video-container': {
+                            borderRadius: '.375rem',
                         },
                     }
                 },
