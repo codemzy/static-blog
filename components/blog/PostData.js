@@ -1,7 +1,7 @@
 import React from 'react';
 import formatISO from 'date-fns/formatISO';
 // settings
-import { blogDomain, blogPath, blogBy, blogName, blogLogoURL } from '../../settings/blog';;
+import { blogDomain, blogPath, blogBy, blogName, blogLogoURL, defaultSocialImage } from '../../settings/blog';;
 import authors from '../../settings/authors';
 
 // for ld json post data script
@@ -16,7 +16,7 @@ function PostData({title, image, description, path, authorId, published, updated
                 "@id": `${blogDomain}${path}`
             },
             "headline": title,
-            "image": [ image || "" ],
+            "image": [ image || defaultSocialImage || "" ],
             "datePublished": formatISO(new Date(published)),
             "dateModified": formatISO(new Date(updated || published)),
             "author": {

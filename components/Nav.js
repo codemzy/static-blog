@@ -1,5 +1,5 @@
 import React from 'react';
-import { blogName } from '../settings/blog';
+import { blogBy } from '../settings/blog';
 // svg
 import { Sun, Moon } from './svg/Icons';
 
@@ -18,7 +18,7 @@ function Nav() {
     return (
         <nav className="flex items-center flex-wrap p-5">
             <a href="/" className="font-bold mr-5 text-2xl inline-flex items-center uppercase">
-                { blogName }
+                { blogBy }
             </a>
             <div className="ml-auto"><div className="relative inline-block"><DarkModeBtn /></div></div>
         </nav>
