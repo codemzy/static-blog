@@ -6,9 +6,10 @@
     "license": "MIT",
     "scripts": {
         "dev": "NODE_ENV=development node server.js",
-        "dev-build": "BUILD=true npm run build-static && npm run dev-css && npm run build-js",
+        "dev-build": "FULL=true PREVIEW=true npm run build-static && npm run dev-css && npm run build-js",
         "dev-css": "postcss css/*.css --dir dist/css --ext .min.css",
-        "build": "npm run build-static && npm run build-css && npm run build-js",
+        "dev-static": "PREVIEW=true node build/build.js",
+        "build": "FULL=true npm run build-static && npm run build-css && npm run build-js",
         "build-css": "postcss css/*.css --dir dist/css --ext .min.css --env production",
         "build-js": "uglifyjs js/index.js --compress --mangle --comments '/^!/' --output dist/js/index.min.js && uglifyjs -mc -o dist/js/darkmode.min.js js/darkmode.js",
         "build-static": "node build/build.js"

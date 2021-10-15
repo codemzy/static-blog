@@ -37,9 +37,9 @@ Now go to the `/settings` directory. In `/settings/blog.js` add the name for the
 
 First run `npm install` to install the dependencies needed to build the blog.
 
-To preview your blog run `npm run dev-build` followed by `npm run dev` to see your blog on port 8080 (http://localhost:8080). No hot reloading currently so if you add a new post run `npm run build-static` to create a new build if your pages and `npm run dev` to start the server again. 
+To preview your blog run `npm run dev-build` followed by `npm run dev` to see your blog on port 8080 (http://localhost:8080). No hot reloading currently so if you add a new post run `npm run dev-static` to create a new build if your pages and `npm run dev` to start the server again. 
 
-Note: `npm run build-static` will just build the pages, not the css or js. If you make changes to any settings, css or js, you can run `npm run dev-build` to create a clean fresh build of everything.
+Note: `npm run dev-static` will just build the pages, not the css or js. If you make changes to any settings, css or js, you can run `npm run dev-build` to create a clean fresh build of everything.
 
 ## Blog
 
@@ -49,7 +49,7 @@ This is where you should start. If you're not building a blog, this probably isn
 
 In the /posts directory you will add your blog posts in markdown format. Use YAML at the top to provide information about the post (title, description etc.)
 
-The file name format is `YYYY-MM-DD_the-blog-post-path.md` with the date being the date for publishing the post. If you want to schedule a post for a future date, use the future date and the post won't go live until you build the site on that date or after.
+The file name format is `YYYY-MM-DD_the-blog-post-path.md` with the date being the date for publishing the post. If you want to schedule a post for a future date, use the future date and the post won't go live until you build the site on that date or after (it will get built on your dev build so that you check how it looks etc - if you want to see how the site will look in production without future posts run `npm run build` instead).
 
 The YAML format is as follows (don't include any markdown in your YAML data)
 

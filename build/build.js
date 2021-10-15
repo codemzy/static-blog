@@ -8,7 +8,7 @@ require("@babel/register");
 const distLocation = __dirname + '/../dist';
 
 // deletes dist for full rebuild
-if (process.env.BUILD && fs.existsSync(distLocation)) {
+if (process.env.FULL && fs.existsSync(distLocation)) {
     fs.rmdirSync(distLocation, { recursive: true, force: true });
 };
 
