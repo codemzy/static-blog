@@ -32,3 +32,7 @@ export const blogPagesLength = 20;
 
 // The main twitter handle for the blog site (used for attribution in social sharing) e.g. @yourtwitter
 export const blogTwitter = "";
+
+// This image will be used on social shares if you didn't give a post an image
+// e.g. https://images.domain.com/blog/default.jpg
+export const defaultSocialImage = "";

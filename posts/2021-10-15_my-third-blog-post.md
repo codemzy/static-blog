@@ -1,6 +1,7 @@
 ---
 title: This is my third blog post and it is the most epic yet!
 description: This is a description about the blog post. It will be the introductory paragraph used in search results, on blog list pages, and at the top of the blog post. It's pretty important.
+image: https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1744&q=80
 categoryId: 'news'
 authorId: 'codemzy'
 published: '2021-10-07'
