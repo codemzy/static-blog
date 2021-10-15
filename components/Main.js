@@ -1,5 +1,5 @@
 import React from 'react';
-import { blogName, blogDescription, metaDescription } from '../settings/blog';
+import { blogDomain, blogName, blogDescription, metaDescription, blogLogoURL, blogTwitter } from '../settings/blog';
 // components
 import Nav from './Nav';
 import Footer from './Footer';
@@ -18,6 +18,13 @@ function Main({ title, description, ...props }) {
                 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
                 <script src="/js/darkmode.min.js"></script>
                 { props.head }
+                { props.path && <link rel="canonical" href={blogDomain + props.path} /> }
+                { props.image ? <meta name="twitter:card" content="summary_large_image" /> : <meta name="twitter:card" content="summary" /> }
+                { blogTwitter && <meta name="twitter:site" content={blogTwitter} /> }
+                { props.path && <meta property="og:url" content={blogDomain + props.path} /> }
+                <meta property="og:title" content={title || blogName} />
+                { description && <meta property="og:description" content={description} /> }
+                { props.image ? <meta property="og:image" content={props.image} /> : blogLogoURL && <meta property="og:image" content={blogLogoURL} /> }
             </head>
             <body className="flex flex-col min-h-screen text-gray-900 dark:bg-gray-900 dark:text-gray-200">
                 <Nav />
