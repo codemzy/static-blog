@@ -31,8 +31,6 @@ const createCategoryLink = function(categoryId) {
 // pager component
 function Pager({page, pages, path}) {
 
-    // add slash to start of path for the link
-    path = '/' + path;
     // remove the current page from the path
     path = path.replace(/\/?index(?![\s\S]*\/?index)/, '');
     path = path.replace(/\/?page\/\d+/, '');
