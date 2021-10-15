@@ -28,7 +28,7 @@ export const blogDescription = "Something about the blog that you are creating, 
 export const metaDescription = `Learn about ~the topics you cover~ from step-by-step guides, case studies, and examples. See the latest articles from ${blogName}.`;
 
 // The number of posts per page (e.g. on the blog and category pages)
-export const blogPagesLength = 20;
+export const blogPagesLength = 1;
 
 // The main twitter handle for the blog site (used for attribution in social sharing) e.g. @yourtwitter
 export const blogTwitter = "";
