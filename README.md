@@ -29,6 +29,8 @@ No hot reloading, no complex webpack set up. It's static. It turns React and Mar
 
 You can the 'use this template' button to create a new repository for your blog. Give it a name, and then clone your new repo to your dev environment (local or in the cloud like Gitpod or Glitch). It's a bit tricky to get updates from a template repo as your new repo will have a different git history. **If you want to get updates as I add them to this template, it might be best to clone the repo (rather than the 'use this template').** Alternatively if you use the template, when I add a new feature you can download the new template, and add back in your posts and customisations. I'm going to leave that choice up to you!
 
+If you will want to upgrade for new features from the template in the future, the best way is to only add posts in `/posts` and change settings in `/settings`.
+
 You're going to need NodeJS installed for the dev server (but since this is static, in production no servers are required).
 
 Now go to the `/settings` directory. In `/settings/blog.js` add the name for the blog and decide if you want your blog as the main site or in subdirectory like `/blog`. There's a bunch of notes in there to help.
@@ -53,10 +55,11 @@ The YAML format is as follows (don't include any markdown in your YAML data)
 ---
 title: This is the blog post in title
 description: This is a description about the blog post. It will be the introductory paragraph used in search results, on blog list pages, and at the top of the blog post. It's pretty important.
-categoryId: 'product-x' // (optional)
-authorId: 'codemzy' // (optional)
-published: 'YYYY-MM-DD' // (ISO Format include also if you want to '2021-10-01T14.30)
-updated: false // include an updated date here if you are updating an old post
+image: https://images.adomain.com/blog/your-image.jpg // (optional) This is optional and will be a URL to an image you would like to be used when sharing the post on socials (goes in the schema and header data)
+categoryId: product-x // (optional)
+authorId: codemzy // (optional)
+published: YYYY-MM-DD // ISO Format include the time also if you want to '2021-10-01T14.30
+updated: YYYY-MM-DD // (optional) include an updated date here if you are updating an old post
 ---
 
 ## Now we can use markdown
