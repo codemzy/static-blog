@@ -26,16 +26,19 @@ minifyOptions = {
     minifyJS: true
 };
 
-exports.buildPage = function buildPage(path, html) {
+exports.buildPage = function buildPage(path, content, type = "html") {
     path = path.charAt(0) !== "/" ? "/" + path : path; // add slash if needed
-    let filepath = distLocation + path + '.html'; // the location for the file
+    let filepath = `${distLocation}${path}.${type}`; // the location for the file
     createDirectory(filepath); // create directory if needed
-    fs.writeFile(filepath, '<!DOCTYPE html>\n' + minify(html, minifyOptions), function(err) {
+    // add html tag and minify if html
+    content = type === "html" ? '<!DOCTYPE html>\n' + minify(content, minifyOptions) : content;
+    // write the static file
+    fs.writeFile(filepath, content, function(err) {
         if (err) { 
             console.error(err); 
             return false 
         }
-        console.log('Build of ' + path + '.html successful');
+        console.log(`Build of ${path}.${type} successful`);
         return true;
     });
 };

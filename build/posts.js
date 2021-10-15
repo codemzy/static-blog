@@ -137,3 +137,10 @@ for (let authorId in postsByAuthor) {
         console.warn(`The author ${authorId} hasn't been added the author settings, but has been added to a post. See settings/authors.`)
     }
 };
+
+// create RSS feed
+// get 20 most recent posts
+let rssRecent = posts.slice(0, 20).map(function(post) {
+    post.date = moment(post.date).format('ddd, D MMM YYYY') + " 09:00:00 GMT";
+    return post;
+});

@@ -1,3 +1,8 @@
+// this is the root domain or subdomain that the live blog will be hosted on
+// this info is needed for the LD-JSON post data and the RSS feed
+// e.g. "www.yourdomain.com" or "blog.yourdomain.com"
+export const blogDomain = "www.yourdomain.com";
+
 // blog location - use "" for no subdirectory or "/blog" for blog subdirectory
 // personally I prefer to use the "/blog" subdirectory so that I can have other stuff on the site
 // and then blog posts are like www.yoursite.com/blog/post-name rather than www.yoursite.com/post-name
