@@ -53,7 +53,7 @@ fs.readdirSync(__dirname + '/../posts').forEach(filename => {
 // map over posts array and create all the blog post pages
 posts = posts.map(function(post) {
     post.path = `${blogPath}/${post.path}`; // add the blog path
-    buildPage(post.path, ReactDOMServer.renderToStaticMarkup(<Post {...post.data} content={post.content} />));
+    buildPage(post.path, ReactDOMServer.renderToStaticMarkup(<Post {...post.data} path={post.path} content={post.content} />));
     return { path: post.path, date: post.latestDate, ...post.data }; // don't need the content anymore just the data
 });
 

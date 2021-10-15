@@ -1,39 +1,40 @@
 import React from 'react';
+import formatISO from 'date-fns/formatISO';
 // settings
-import { blogPath, blogName } from '../../settings/blog';;
+import { blogDomain, blogPath, blogBy, blogName, blogLogoURL } from '../../settings/blog';;
 import authors from '../../settings/authors';
 
 // for ld json post data script
-function PostData({title, description, path, authorId, published, updated}) {
-    return (
-        <script type="application/ld+json">
-        {{
+function PostData({title, image, description, path, authorId, published, updated}) {
+
+    function makePostSchema() {
+        return {
             "@context": "http://schema.org",
             "@type": "Article",
             "mainEntityOfPage": {
                 "@type": "WebPage",
-                "@id": path
+                "@id": `${blogDomain}${path}`
             },
             "headline": title,
-            "image": [],
-            "datePublished": published,
-            "dateModified": updated || published,
+            "image": [ image || "" ],
+            "datePublished": formatISO(new Date(published)),
+            "dateModified": formatISO(new Date(updated || published)),
             "author": {
                 "@type": authorId ? "Person" : "Organization",
                 "name": authorId ? authors[authorId].name : blogName,
-                "url": authorId ? `${blogPath}/author/${authorId}` : blogPath,
+                "url": authorId ? `${blogDomain}${blogPath}/author/${authorId}` : `${blogDomain}${blogPath}`,
             },
             "publisher": {
                 "@type": "Organization",
-                "name": blogName, // change this to the site name we need to add this in settings and site base url
-                "logo": {
-                    "@type": "ImageObject",
-                    "url": "[THE SITE URL]/img/apple-touch-icon.png"
-                }
+                "name": blogBy,
+                ...blogLogoURL && { "logo": { "@type": "ImageObject", "url": blogLogoURL }}
             },
             "description": description
-        }}
-        </script>
+        }
+    };
+
+    return (
+        <script type='application/ld+json' dangerouslySetInnerHTML={{ __html: JSON.stringify(makePostSchema()) }} />
     );
 };
 

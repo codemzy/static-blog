@@ -11,8 +11,14 @@ export const blogDomain = "www.yourdomain.com";
 // if you do use "/blog" make sure you create a custom index page and wire it up in build/pages
 export const blogPath = "";
 
+// this could be the business, website or the person
+export const blogBy = "Static Blog Inc";
+
 // The name of the blog
 export const blogName = "The Static Blog";
+
+// url for a logo (this is used in the article ld json)
+export const blogLogoURL = false;
 
 // Description for visitors to the blog (you can use markup)
 export const blogDescription = "Something about the blog that you are creating, and what you will be writing about. Oh and maybe a [link to your newsletter](/) or something!"
