@@ -16,6 +16,13 @@ const renderer = {
         }
         return false; // or return default
     },
+    link(href, title, text) {
+        // add target blank to external links
+        if (href.match(/http/gi)) {
+            return `<a href="${href}" target="_blank" rel="noopener">${text}</a>`;
+        }
+        return false; // or return default
+    },
     list(body, ordered, start) {
         // return letter lists
         if (!ordered && body.match(/^<li>[a-z]\)<\/li>/)) {
