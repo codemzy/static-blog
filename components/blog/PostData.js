@@ -16,7 +16,7 @@ function PostData({title, image, description, path, authorId, published, updated
                 "@id": `${blogDomain}${path}`
             },
             "headline": title,
-            "image": [ image || defaultSocialImage || "" ],
+            "image": [ image || defaultSocialImage || blogLogoURL || "" ],
             "datePublished": formatISO(new Date(published)),
             "dateModified": formatISO(new Date(updated || published)),
             "author": {
