@@ -55,6 +55,8 @@ module.exports = {
                         },
                         img: {
                             borderRadius: '.375rem',
+                            marginLeft: 'auto',
+                            marginRight: 'auto',
                         },
                         '.video-container': {
                             borderRadius: '.375rem',
