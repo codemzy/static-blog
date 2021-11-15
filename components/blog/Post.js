@@ -17,7 +17,7 @@ function Post(props) {
 
     return (
         <Main {...props} image={props.image || defaultSocialImage} head={<React.Fragment><link href="/css/prism.min.css" rel="stylesheet" /><PostData {...props} /></React.Fragment>}>
-            <div className="p-5">
+            <div className="p-5 break-words">
                 <div className="max-w-3xl mx-auto my-10">
                     <p className="py-5 flex items-center font-semibold text-lg md:text-xl">
                         <a href={blogPath || "/"}>Blog</a>
